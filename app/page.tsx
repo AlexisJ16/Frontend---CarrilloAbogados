@@ -1,157 +1,139 @@
-import Link from "next/link";
+import Countdown from './components/Countdown';
+import SubscriptionForm from './components/SubscriptionForm';
+import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Header / Navigation */}
-      <header className="bg-primary-800 text-white shadow-lg">
-        <nav className="container mx-auto px-4 py-6">
-          <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold">
-              Carrillo Abogados
-            </div>
-            <div className="hidden md:flex space-x-8">
-              <Link href="#inicio" className="hover:text-accent-400 transition-colors">Inicio</Link>
-              <Link href="#servicios" className="hover:text-accent-400 transition-colors">Servicios</Link>
-              <Link href="#sobre-nosotros" className="hover:text-accent-400 transition-colors">Sobre Nosotros</Link>
-              <Link href="#contacto" className="hover:text-accent-400 transition-colors">Contacto</Link>
+    <div className="min-h-screen bg-gradient-to-br from-carrillo-blue-dark via-carrillo-blue to-carrillo-blue-light relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-white/5 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-carrillo-blue-light/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1.5s' }}></div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 container mx-auto px-4 py-8 md:py-16 min-h-screen flex flex-col">
+        
+        {/* Header / Logo Section */}
+        <header className="text-center mb-12 md:mb-16 animate-fade-in">
+          <div className="flex justify-center mb-6">
+            <div className="bg-white/95 backdrop-blur-sm rounded-3xl px-8 py-6 shadow-2xl">
+              <Image 
+                src="/logo-carrillo.jpg" 
+                alt="Carrillo Abogados" 
+                width={300}
+                height={120}
+                priority
+                className="h-auto w-auto max-w-[250px] md:max-w-[300px]"
+              />
             </div>
           </div>
-        </nav>
-      </header>
-
-      {/* Hero Section */}
-      <section id="inicio" className="py-20 px-4">
-        <div className="container mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-primary-900 mb-6">
-            Servicios Legales Profesionales
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto">
-            Expertos en brindar soluciones legales integrales con experiencia, dedicación y compromiso.
+          <p className="text-carrillo-gray text-lg md:text-xl font-light tracking-wide">
+            REGISTROS DE MARCAS Y PATENTES
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="#contacto" 
-              className="bg-accent-500 hover:bg-accent-600 text-white font-bold py-4 px-8 rounded-lg transition-colors shadow-lg"
-            >
-              Consulta Gratuita
-            </Link>
-            <Link 
-              href="#servicios" 
-              className="bg-white hover:bg-gray-50 text-primary-800 font-bold py-4 px-8 rounded-lg border-2 border-primary-800 transition-colors"
-            >
-              Nuestros Servicios
-            </Link>
-          </div>
-        </div>
-      </section>
+        </header>
 
-      {/* Services Section */}
-      <section id="servicios" className="py-20 px-4 bg-gray-100">
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center text-primary-900 mb-12">
-            Nuestros Servicios
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-2xl font-bold text-primary-800 mb-3">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="sobre-nosotros" className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-primary-900 mb-6">
-              Sobre Nosotros
-            </h2>
-            <p className="text-lg text-gray-700 mb-6">
-              En Carrillo Abogados, contamos con años de experiencia brindando servicios legales de excelencia. 
-              Nuestro equipo de profesionales está comprometido con la defensa de sus derechos y la búsqueda 
-              de las mejores soluciones para cada caso.
-            </p>
-            <p className="text-lg text-gray-700">
-              Nos caracterizamos por nuestra atención personalizada, profesionalismo y resultados efectivos.
+        {/* Hero Section */}
+        <section className="flex-1 flex flex-col justify-center items-center text-center space-y-12 md:space-y-16 animate-slide-up">
+          
+          {/* Main Message */}
+          <div className="space-y-6 max-w-4xl">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight">
+              El futuro legal<br />
+              <span className="text-carrillo-blue-light">ahora es digital</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-carrillo-gray font-light max-w-2xl mx-auto">
+              23 años de experiencia jurídica se transforman en la plataforma legal más innovadora de Colombia
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* Contact Section */}
-      <section id="contacto" className="py-20 px-4 bg-primary-800 text-white">
-        <div className="container mx-auto">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">
-              Contáctenos
-            </h2>
-            <p className="text-lg mb-8">
-              Estamos listos para ayudarle. Comuníquese con nosotros para una consulta inicial.
+          {/* Countdown Timer */}
+          <div className="space-y-6 w-full">
+            <p className="text-carrillo-blue-light text-2xl md:text-3xl font-bold tracking-wider">
+              LANZAMIENTO MARZO 2026
             </p>
-            <div className="space-y-4">
-              <div className="flex items-center justify-center space-x-3">
-                <span className="text-2xl">📧</span>
-                <span className="text-lg">contacto@carrilloabogados.com</span>
-              </div>
-              <div className="flex items-center justify-center space-x-3">
-                <span className="text-2xl">📞</span>
-                <span className="text-lg">+1 (555) 123-4567</span>
-              </div>
-              <div className="flex items-center justify-center space-x-3">
-                <span className="text-2xl">📍</span>
-                <span className="text-lg">Dirección de la oficina</span>
-              </div>
+            <Countdown />
+          </div>
+
+          {/* Value Proposition */}
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-5xl w-full mt-12">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="text-5xl mb-4">®</div>
+              <h3 className="text-xl font-bold text-white mb-2">Marcas y Patentes</h3>
+              <p className="text-carrillo-gray text-sm">
+                Protección integral de tu propiedad intelectual
+              </p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="text-5xl mb-4">⚖️</div>
+              <h3 className="text-xl font-bold text-white mb-2">Derecho Corporativo</h3>
+              <p className="text-carrillo-gray text-sm">
+                Asesoría empresarial especializada
+              </p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="text-5xl mb-4">⚡</div>
+              <h3 className="text-xl font-bold text-white mb-2">Respuesta Inmediata</h3>
+              <p className="text-carrillo-gray text-sm">
+                De 24 horas a menos de 1 minuto
+              </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="bg-primary-900 text-white py-8 px-4">
-        <div className="container mx-auto text-center">
-          <p className="text-sm">
-            &copy; {new Date().getFullYear()} Carrillo Abogados. Todos los derechos reservados.
+          {/* Subscription Form */}
+          <div className="w-full max-w-4xl mt-12 space-y-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-white">
+              Sé el primero en conocer nuestra nueva plataforma
+            </h2>
+            <p className="text-carrillo-gray text-lg">
+              Mientras preparamos la nueva experiencia digital, nuestro equipo sigue atendiendo tus necesidades legales
+            </p>
+            <SubscriptionForm />
+          </div>
+
+          {/* Contact Options */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            <a
+              href="mailto:asesora@carrilloabgd.com"
+              className="px-8 py-4 bg-white text-carrillo-blue-dark font-bold rounded-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
+            >
+              📧 Escríbenos
+            </a>
+            <a
+              href="mailto:director@carrilloabgd.com"
+              className="px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white font-bold rounded-xl hover:bg-white/20 transition-all duration-300"
+            >
+              ¿Consulta Urgente?
+            </a>
+          </div>
+
+        </section>
+
+        {/* Footer */}
+        <footer className="mt-16 text-center space-y-4 text-carrillo-gray text-sm">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4">
+            <p>📍 Cra. 40 #27-26, Torre de Cali, Piso 21, Oficina 2102A</p>
+            <span className="hidden md:inline">|</span>
+            <p>Cali, Valle del Cauca, Colombia</p>
+          </div>
+          <div className="flex justify-center gap-6 text-xs">
+            <a href="mailto:director@carrilloabgd.com" className="hover:text-white transition-colors">
+              director@carrilloabgd.com
+            </a>
+            <span>|</span>
+            <a href="mailto:asesora@carrilloabgd.com" className="hover:text-white transition-colors">
+              asesora@carrilloabgd.com
+            </a>
+          </div>
+          <p className="text-xs mt-6">
+            © 2026 Carrillo ABGD SAS. Todos los derechos reservados. | 23 años de experiencia legal
           </p>
-        </div>
-      </footer>
+          <p className="text-xs italic">
+            Dr. Omar Carrillo - 15 años en la Superintendencia de Industria y Comercio (SIC)
+          </p>
+        </footer>
+
+      </div>
     </div>
   );
 }
-
-const services = [
-  {
-    icon: "⚖️",
-    title: "Derecho Civil",
-    description: "Asesoría en contratos, propiedad, familia y sucesiones."
-  },
-  {
-    icon: "🏢",
-    title: "Derecho Corporativo",
-    description: "Constitución de empresas, fusiones y asesoría corporativa."
-  },
-  {
-    icon: "🔨",
-    title: "Derecho Laboral",
-    description: "Defensa de derechos laborales y asesoría en relaciones de trabajo."
-  },
-  {
-    icon: "🏠",
-    title: "Derecho Inmobiliario",
-    description: "Compraventa, arrendamiento y litigios inmobiliarios."
-  },
-  {
-    icon: "💼",
-    title: "Derecho Mercantil",
-    description: "Contratos comerciales y resolución de conflictos mercantiles."
-  },
-  {
-    icon: "⚡",
-    title: "Consultoría Legal",
-    description: "Asesoramiento legal preventivo y estratégico para empresas."
-  }
-];
