@@ -11,14 +11,17 @@
 - **Solo Generación Estática:** Este proyecto está configurado con `output: 'export'`.
   - **Prohibido:** Rutas API (`app/api`), `headers()`, `cookies()`, o middleware que dependa de un entorno de ejecución Node.js.
   - **Obtención de Datos:** Debe hacerse en tiempo de construcción (static params) o del lado del cliente (useEffect/SWR).
+  - **Prevención de Hidratación:** Cualquier elemento que use `Math.random()` o fechas dinámicas DEBE generarse dentro de un `useEffect` para evitar errores de Hydration Mismatch entre servidor y cliente.
 - **Manejo de Activos:** Las imágenes tienen `unoptimized: true` en `next.config.js`. Usa `next/image` pero entiende que renderizará etiquetas `<img>` estándar sin servicios de optimización bajo demanda.
 - **Enrutamiento:** Utiliza la estructura estándar de App Router. `trailingSlash: true` está habilitado para compatibilidad con cPanel.
 
 ## Patrones Clave y Convenciones
 
 ### 1. Identidad Visual y Estilos
-- **Paleta de Colores:** Usa ESTRICTAMENTE los colores definidos en Tailwind para consistencia de marca.
+- **Concepto:** "Cinemático y Alto Contraste". Preferimos fondos oscuros sólidos con efectos de luz (nebulas, glow) sobre transparencias totales que comprometan la legibilidad.
+- **Paleta de Colores:** Usa ESTRICTAMENTE los colores definidos en Tailwind.
   - Primarios: `text-carrillo-blue`, `bg-carrillo-blue-dark`.
+  - Fondos Profundos: `#020205` (Splash/Fondos), `#0A0F1E` (Tarjetas/Modales).
   - Claros/Acentos: `text-carrillo-blue-light`.
   - Neutros: `carrillo-gray`, `carrillo-slate`.
 - **Fuentes:** 'Lato' es la familia de fuente principal (`font-lato`).

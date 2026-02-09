@@ -1,203 +1,94 @@
 # Estado Actual del Proyecto - Carrillo Abogados Landing Page
 
-**Fecha:** 8 de Febrero de 2026  
-**Estado:** ✅ Funcional y listo para deploy  
-**Branch:** main
+**Fecha:** 9 de Febrero de 2026  
+**Estado:** ✅ Optimizado y listo para Beta  
+**Branch:** main  
+**Versión:** 2.0 (Cinematic Update)
 
 ---
 
 ## 📊 Resumen Ejecutivo
 
-Landing page profesional con animaciones avanzadas implementada con Next.js y Framer Motion, lista para subir a cPanel.
+El proyecto ha evolucionado de una landing page estándar a una **experiencia digital inmersiva**. Se han resuelto problemas críticos de renderizado (hidratación) y se ha elevado el nivel visual con una nueva dirección de arte "Cinemática". La infraestructura está lista para cPanel.
 
-**Progreso General:** 95% completo
-
----
-
-## ✅ Funcionalidades Implementadas
-
-### 1. Sistema de Animación (Framer Motion)
-- ✅ Splash screen con cuadro volador desde la izquierda
-- ✅ Animación spring con física realista
-- ✅ Logo y título como componente unificado (`BrandLogo.tsx`)
-- ✅ Shared layout animation (logo viaja del splash al header)
-- ✅ Backdrop blur animado (0px → 12px)
-- ✅ Usuario controla cierre del splash (botón "Explorar Ahora")
-- ✅ Transición fluida sin saltos de página
-
-### 2. Componentes Implementados
-- ✅ `BrandLogo.tsx` - Logo + título unificados con 2 variantes (splash/header)
-- ✅ `SplashScreen.tsx` - Animación de entrada con Framer Motion
-- ✅ `ParticlesBackground.tsx` - 80 partículas conectadas con Canvas
-- ✅ `FloatingShapes.tsx` - 7 formas geométricas animadas
-- ✅ `ServiceCard.tsx` - 3 tarjetas con hover effects avanzados
-- ✅ `Countdown.tsx` - Timer dinámico a 27/03/2026
-- ✅ `SubscriptionForm.tsx` - Formulario con micro-interacciones
-- ✅ `LegalFactsModal.tsx` - Modal con 4 datos curiosos legales
-
-### 3. Página Principal
-- ✅ Header fixed con logo clickeable
-- ✅ Hero section con mensaje principal gigante
-- ✅ Countdown integrado (no dominante)
-- ✅ 3 servicios destacados (Marcas y Patentes, Derecho Corporativo, Respuesta Inmediata)
-- ✅ Estadísticas showcase (23 años, 15x, <1min, 24/7)
-- ✅ Sección Dr. Omar Carrillo (15 años en SIC)
-- ✅ Formulario de captura de leads
-- ✅ Botón flotante Gmail (asesora@carrilloabgd.com)
-- ✅ Footer con ubicación y contactos
-
-### 4. Sistema de Colores
-```javascript
-carrillo-blue: '#66728D'
-carrillo-blue-dark: '#51679C'
-carrillo-blue-light: '#9DA8C5'
-carrillo-gray: '#D9DBE0'
-```
-
-### 5. Animaciones Tailwind (12 custom)
-- fade-in, slide-up, slide-in-left, slide-in-right
-- pulse-slow, float, float-slow
-- glow, shimmer
-- scale-in, bounce-slow (nuevas con Framer Motion)
+**Progreso General:** 98% completo (Solo falta deploy final y datos reales).
 
 ---
 
-## ⚠️ Pendientes
+## ✅ Últimos Avances y Correcciones (V2)
 
-### Configuración Requerida
+### 1. Splash Screen V2 ("Nebula Cinematic")
+- **Concepto:** Se reemplazó la barra de carga genérica por un concepto de "Estableciendo Conexión Segura".
+- **Tecnología:** Sistema de partículas 3D simuladas y fondos de "nebulosa" animada con Framer Motion.
+- **Corrección Crítica:** Se eliminó el error de `Hydration Mismatch` moviendo la generación aleatoria de partículas (`Math.random`) estrictamente al `useEffect` (Client-side only).
+- **Interacción:** Transición de salida con efecto "Zoom In" inmersivo hacia el contenido.
 
-**1. Número de WhatsApp**
-- Ubicación: `app/page.tsx` (buscar "Contacto")
-- Actual: `https://wa.me/NUMERO_PENDIENTE`
-- Cambiar a: `https://wa.me/57XXXXXXXXXX` (código país 57 + 10 dígitos, sin espacios)
+### 2. Modal de Curiosidades (High-Contrast)
+- **Problemática:** La versión anterior (vidrio transparente) tenía problemas de lectura.
+- **Solución:** Implementación de tarjetas sólidas con fondo `#0A0F1E` y contenedores de texto oscuros para máximo contraste.
+- **Estética:** Se añadieron orbes de gradiente dinámico y bordes sutiles para mantener la elegancia sin sacrificar legibilidad.
+- **Navegación:** Controles táctiles mejorados y badge "Sabías Que".
 
-**2. Deploy a cPanel**
-- Build ejecutado: ✅ Archivos en `out/`
-- Pendiente: Subir a HostGator/cPanel
-- Ver: [DEPLOYMENT_CPANEL.md](DEPLOYMENT_CPANEL.md)
-
----
-
-## 📦 Dependencias Instaladas
-
-### Core
-- next: 15.5.12
-- react: 18.3.1
-- react-dom: 18.3.1
-- typescript: 5.4.5
-
-### Styling
-- tailwindcss: 3.4.3
-- postcss: 8.4.x
-- autoprefixer: 10.4.x
-
-### Animaciones
-- **framer-motion: 11.x** (nueva instalación)
-
-### Dev Tools
-- eslint: 8.x
-- eslint-config-next: 15.5.12
-- @types/node, @types/react, @types/react-dom
+### 3. Estabilidad del Código
+- **Hydration Safe:** Auditoría completa de componentes para prevenir errores de rehidratación en Next.js App Router.
+- **Performance:** Las animaciones pesadas usan propiedades aceleradas por GPU (`transform`, `opacity`, `filter`).
 
 ---
 
-## 🗂️ Estructura de Archivos Clave
+## 🗺️ Caminos para Continuar (Propuesta de Estrategia)
+
+Para la siguiente fase con el modelo **GPT-5.2-Codex**, propongo elegir uno de estos tres caminos definidos:
+
+### Camino A: Ruta de Excelencia Técnica y SEO (Recomendado para Lanzamiento)
+*Enfocado en que Google ame la página y cargue instantáneamente.*
+1. **Auditoría Lighthouse:** Llevar Performance, Accesibilidad y SEO a 100/100.
+2. **Metadata Dinámica:** Implementar Open Graph (vistas previas para WhatsApp/LinkedIn) perfectas.
+3. **Microdatos Schema.org:** Añadir JSON-LD para "LegalService" para aparecer en mapas y búsquedas ricas.
+4. **Optimización de Imágenes:** Generar srcSets manuales para asegurar nitidez en móviles sin sobrecargar datos.
+
+### Camino B: Ruta de Conversión y Leads (Marketing)
+*Enfocado en capturar clientes agresivamente.*
+1. **Validación de Formularios Avanzada:** Feedback en tiempo real (Zod/React Hook Form) para evitar errores de usuario.
+2. **Integración CRM Simulada:** Conectar el formulario a Google Sheets (via Apps Script) para tener base de datos sin backend.
+3. **Botón WhatsApp Inteligente:** Mensajes pre-llenados diferentes según la sección desde donde se hace clic.
+4. **Pop-up de Intención de Salida:** Un modal final que ofrezca una consulta gratis si el usuario saca el mouse de la ventana.
+
+### Camino C: Ruta de Expansión de Contenido (Arquitectura)
+*Enfocado en hacer crecer el sitio a mediano plazo.*
+1. **Páginas de Servicio Dedicadas:** Convertir los modales de servicios en páginas completas (`/servicios/marcas`, `/servicios/corporativo`).
+2. **Blog Estático:** Sistema simple basado en Markdown para publicar artículos jurídicos y mejorar SEO orgánico.
+3. **Sección de Equipo:** Página detallada para el perfil del Dr. Omar Carrillo y asociados.
+
+---
+
+## ⚠️ Pendientes Críticos
+
+**1. Configuración de Contacto**
+- Número de WhatsApp real pendiente.
+- Correos electrónicos actuales son simulados (abren cliente de correo local).
+
+**2. Verificación Móvil**
+- La nueva animación de partículas debe probarse en dispositivos de gama baja para asegurar 60FPS.
+
+---
+
+## 🗂️ Estructura de Archivos Clave Actualizada
 
 ```
 app/
 ├── components/
-│   ├── BrandLogo.tsx          # ⭐ NUEVO - Logo unificado
-│   ├── SplashScreen.tsx       # ⭐ REDISEÑADO - Framer Motion
-│   ├── LegalFactsModal.tsx    # Modal interactivo
-│   ├── ParticlesBackground.tsx
-│   ├── FloatingShapes.tsx
-│   ├── ServiceCard.tsx
-│   ├── Countdown.tsx
-│   └── SubscriptionForm.tsx
-├── globals.css
-├── layout.tsx
-└── page.tsx                   # ⭐ ACTUALIZADO - LayoutGroup + AnimatePresence
-
-tailwind.config.ts             # ⭐ +2 animaciones nuevas
-next.config.js                 # output: 'export'
-package.json                   # ⭐ +framer-motion
+│   ├── SplashScreen.tsx       # ✅ V2: Logic fixed (Client-side particles)
+│   ├── LegalFactsModal.tsx    # ✅ V2: Solid contrast design
+│   ├── BrandLogo.tsx          # ✅ V2: Props para hideText y variante splash
+│   └── (Otros componentes estables...)
+├── globals.css                # Estilos globales y utilidades de neón
+└── page.tsx                   # Layout principal orquestado
 ```
 
 ---
 
-## 🎬 Flujo de Usuario
-
-1. **Carga página** → Efectos de fondo (partículas, formas) + blur
-2. **Splash aparece** → Cuadro vuela desde izquierda con spring animation
-3. **Usuario lee mensaje** → "Bienvenido" + info de empresa
-4. **Click "Explorar Ahora"** → Splash cierra, logo viaja al header
-5. **Navegación normal** → Scroll por secciones
-6. **Click logo header** → Modal con datos curiosos (auto-rotación 5s)
-7. **Formulario** → Captura lead (nombre, email, teléfono, servicio)
-8. **Botón flotante** → Gmail con email pre-configurado
-
----
-
-## 🔧 Comandos Útiles
-
-```bash
-# Desarrollo
-npm run dev              # localhost:3000
-
-# Producción
-npm run build            # Genera out/ con archivos estáticos
-npm run lint             # ESLint
-
-# Limpieza (si hay errores de caché)
-Remove-Item -Recurse -Force .next
-npm run build
-```
-
----
-
-## 📊 Build Output
-
-```
-Route (app)                    Size     First Load JS
-┌ ○ /                         52.9 kB  155 kB
-├ ○ /_not-found               996 B    103 kB
-└ ○ /sitemap.xml              123 B    102 kB
-
-○ (Static) prerendered as static content
-```
-
-**Nota:** Aumento de 12.3kB → 52.9kB por Framer Motion (~40kb). Trade-off aceptable para animaciones profesionales.
-
----
-
-## 🐛 Problemas Conocidos
-
-### Resueltos
-- ✅ Header tapaba badge "23 años" → Solucionado con `pt-32`
-- ✅ Error caché Next.js → Limpiar `.next/` y rebuild
-- ✅ Logo y título separados → Unificados en `BrandLogo.tsx`
-
-### Actuales
-- Ninguno crítico
-
----
-
-## 🎯 Próximos Pasos Sugeridos
-
-### Inmediatos
-1. Configurar número de WhatsApp
-2. Probar animación completa en móviles
-3. Deploy a cPanel
-4. Verificar en dominio real
-
-### Futuras Mejoras (Opcionales)
-- Stagger animation en service cards
-- Flip countdown con Framer Motion
-- Parallax effects en scroll
-- Más datos curiosos en modal
-- A/B testing de formulario
-
----
+**Última actualización:** 9 de Febrero de 2026 (10:00 AM)
+**Responsable:** GitHub Copilot (Gemini 3 Pro Preview)
 
 ## 📞 Contactos Configurados
 
