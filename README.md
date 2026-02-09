@@ -1,102 +1,199 @@
-# 🚀 Landing Page "Coming Soon" - Carrillo ABGD
+# Carrillo Abogados - Landing Page "Próximamente"
 
-![Estado](https://img.shields.io/badge/Estado-LISTO%20PARA%20PRODUCCI%C3%93N-brightgreen)
-![Next.js](https://img.shields.io/badge/Next.js-15.5.12-black)
-![React](https://img.shields.io/badge/React-18.3-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.4.5-blue)
-![Tailwind](https://img.shields.io/badge/Tailwind-3.4.3-38bdf8)
+![Next.js](https://img.shields.io/badge/Next.js-15.5.12-black) ![React](https://img.shields.io/badge/React-18.3-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5.4.5-blue) ![Tailwind](https://img.shields.io/badge/Tailwind-3.4.3-38bdf8) ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-11.x-ff69b4)
 
 ---
 
 ## 📋 Descripción
 
-Landing page profesional de **alto impacto visual** para el despacho de abogados **Carrillo ABGD SAS**, diseñada para generar expectativa sobre el lanzamiento de su nueva plataforma digital de servicios legales.
+Landing page profesional de **alto impacto visual** para **Carrillo Abogados** (Carrillo ABGD SAS), diseñada para generar expectativa sobre el lanzamiento de la plataforma legal digital más innovadora de Colombia.
 
-**Fecha de lanzamiento:** 27 de Marzo de 2026  
-**Dominio:** [carrilloabgd.com](https://carrilloabgd.com)
-
----
-
-## ✨ Características Destacadas
-
-### 🎨 Diseño Visual
-- Paleta de colores corporativa de Carrillo Abogados
-- Fuente **Lato** de Google Fonts (todos los pesos)
-- Logo oficial integrado
-- Gradientes animados y efectos glassmorphism
-- Animaciones suaves y profesionales
-- **100% responsive** (móvil, tablet, desktop)
-
-### ⚡ Funcionalidades
-- **Countdown Timer** dinámico hasta el 27 de Marzo 2026
-- **Formulario de suscripción** para captura de leads
-- Botones de contacto directo por email
-- Efectos hover interactivos
-- Optimizado para carga rápida
-
-### 🔍 SEO Optimizado
-- Meta tags completos
-- Open Graph y Twitter Cards
-- Sitemap.xml generado
-- Robots.txt configurado
-- 15+ palabras clave estratégicas
+**Lanzamiento:** 27 de Marzo de 2026  
+**Dominio:** carrilloabgd.com  
+**Hosting:** cPanel (HostGator) - Static Export
 
 ---
 
-## 🛠️ Tecnologías
+## 🎯 Características Principales
 
-- [Next.js 15.5.12](https://nextjs.org/) - Framework React con SSG
-- [React 18.3](https://react.dev/) - Biblioteca de UI
-- [TypeScript 5.4.5](https://www.typescriptlang.org/) - Tipado estático
-- [Tailwind CSS 3.4.3](https://tailwindcss.com/) - Framework utility-first
-- [Google Fonts - Lato](https://fonts.google.com/specimen/Lato) - Tipografía
+### Diseño Visual
+- **Animación de entrada profesional** con Framer Motion (cuadro volador, logo que viaja)
+- **Sistema de partículas conectadas** con Canvas API (80 partículas)
+- **Formas geométricas flotantes** (7 elementos animados)
+- Gradientes dinámicos con colores corporativos
+- Efectos glassmorphism y backdrop blur
+- Logo y marca unificados en componente único
+
+### Funcionalidades Core
+- ✅ **Splash screen animado** (entrada fluida controlada por usuario)
+- ✅ **Countdown dinámico** hasta 27/03/2026
+- ✅ **Formulario de captura de leads** con micro-interacciones
+- ✅ **Modal de datos curiosos legales** (4 facts interactivos)
+- ✅ **Service cards** con hover effects avanzados
+- ✅ **Estadísticas showcase** (23 años, 15x leads, <1min respuesta, 24/7)
+- ✅ **Botón flotante** para contacto por Gmail
+
+### Interactividad
+- Logo clickeable abre modal con datos curiosos del sector legal
+- Animaciones spring con física realista
+- Shared layout animations (logo viaja entre posiciones)
+- Micro-interacciones en formularios (focus states, shimmer effects)
+- Hover effects en tarjetas de servicios
 
 ---
 
-## 📦 Instalación y Uso
+## 🛠️ Stack Tecnológico
 
-### Requisitos Previos
-- Node.js 20+ instalado
+### Core
+- **Next.js 15.5.12** - Framework con Static Site Generation
+- **React 18.3** - Biblioteca UI con hooks
+- **TypeScript 5.4.5** - Type safety
+- **Tailwind CSS 3.4.3** - Utility-first styling
+
+### Animaciones
+- **Framer Motion 11.x** - Layout animations, gestures, spring physics
+- **Canvas API** - Sistema de partículas personalizado
+
+### Tipografía & Assets
+- **Google Fonts: Lato** (100, 300, 400, 700, 900)
+- Logo oficial: `/public/logo-carrillo.jpg`
+
+### Configuración
+- `output: 'export'` en next.config.js (static export para cPanel)
+- Custom scrollbar styling
+- 12 animaciones personalizadas en Tailwind
+
+---
+
+## 📦 Instalación
+
+### Requisitos
+- Node.js 20+
 - npm o yarn
 
-### Instalación
+### Setup
 
 ```bash
-# Clonar el repositorio (si aplica)
-git clone https://github.com/AlexisJ16/Frontend---CarrilloAbogados.git
-
-# Navegar al directorio
-cd Frontend---CarrilloAbogados
-
 # Instalar dependencias
 npm install
-```
 
-### Comandos Disponibles
-
-```bash
-# Servidor de desarrollo (localhost:3000)
+# Desarrollo
 npm run dev
 
-# Compilar para producción
-npm run build
-
-# Iniciar servidor de producción
-npm run start
-
-# Linter
-npm run lint
-```
-
-### Generar Archivos Estáticos
-
-```bash
+# Build para producción (genera carpeta out/)
 npm run build
 ```
-
-Los archivos estáticos se generarán en la carpeta `out/` listos para cPanel.
 
 ---
+
+## 🎨 Paleta de Colores
+
+```javascript
+carrillo-blue: '#66728D'
+carrillo-blue-dark: '#51679C'
+carrillo-blue-light: '#9DA8C5'
+carrillo-gray: '#D9DBE0'
+Adicionales: #888C96, #7B7C7D, #000000, #FFFFFF
+```
+
+---
+
+## 📁 Estructura del Proyecto
+
+```
+app/
+├── components/
+│   ├── BrandLogo.tsx          # Logo + título unificado
+│   ├── Countdown.tsx           # Timer dinámico
+│   ├── FloatingShapes.tsx      # Formas geométricas animadas
+│   ├── LegalFactsModal.tsx     # Modal con datos curiosos
+│   ├── ParticlesBackground.tsx # Sistema de partículas Canvas
+│   ├── ServiceCard.tsx         # Tarjetas de servicios
+│   ├── SplashScreen.tsx        # Animación de entrada
+│   └── SubscriptionForm.tsx    # Formulario de leads
+├── globals.css                 # Estilos globales + font
+├── layout.tsx                  # Layout raíz con metadata
+└── page.tsx                    # Página principal
+
+public/
+├── logo-carrillo.jpg           # Logo oficial
+├── logo-carrillo.svg           # Logo vectorial (backup)
+└── robots.txt                  # SEO
+
+tailwind.config.ts              # Colores + 12 animaciones custom
+next.config.js                  # output: 'export' para static
+```
+
+---
+
+## 🚀 Deployment en cPanel
+
+### Proceso
+
+1. **Build del proyecto:**
+   ```bash
+   npm run build
+   ```
+
+2. **Archivos generados en `out/`:**
+   - `index.html`
+   - `_next/` (JS, CSS, assets)
+   - `logo-carrillo.jpg`
+   - `robots.txt`, `sitemap.xml`
+
+3. **Subir a cPanel:**
+   - Acceder a File Manager
+   - Navegar a `public_html/`
+   - Subir contenido completo de carpeta `out/`
+
+4. **Verificar:**
+   - Visitar dominio
+   - Probar animación de entrada
+   - Verificar formulario y botones
+
+📄 Ver [DEPLOYMENT_CPANEL.md](DEPLOYMENT_CPANEL.md) para guía detallada.
+
+---
+
+## 📞 Contacto
+
+**Emails configurados:**
+- director@carrilloabgd.com
+- asesora@carrilloabgd.com (botón Gmail)
+
+**WhatsApp:** Pendiente configuración  
+📝 Ver [CONFIGURACION_WHATSAPP.md](CONFIGURACION_WHATSAPP.md)
+
+---
+
+## 📚 Documentación Adicional
+
+- **[ESTADO_ACTUAL.md](ESTADO_ACTUAL.md)** - Estado detallado del desarrollo
+- **[SISTEMA_ANIMACION.md](SISTEMA_ANIMACION.md)** - Documentación de Framer Motion
+- **[DEPLOYMENT_CPANEL.md](DEPLOYMENT_CPANEL.md)** - Guía de despliegue
+- **[CONFIGURACION_WHATSAPP.md](CONFIGURACION_WHATSAPP.md)** - Pendiente número WhatsApp
+
+---
+
+## 👨‍💻 Desarrollo
+
+**Repositorio:** AlexisJ16/Frontend---CarrilloAbogados  
+**Branch:** main  
+**Estado:** ✅ Listo para producción
+
+### Comandos útiles:
+
+```bash
+npm run dev          # Servidor desarrollo (localhost:3000)
+npm run build        # Build producción + static export
+npm run lint         # ESLint
+```
+
+---
+
+## 📄 Licencia
+
+© 2026 Carrillo ABGD SAS. Todos los derechos reservados.
 
 ## 🚀 Deployment a cPanel
 

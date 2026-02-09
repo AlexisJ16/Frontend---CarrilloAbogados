@@ -1,6 +1,7 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useRef } from 'react';
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
 
 interface ServiceCardProps {
   icon: ReactNode;
@@ -10,21 +11,41 @@ interface ServiceCardProps {
 }
 
 export default function ServiceCard({ icon, title, description, delay = '0s' }: ServiceCardProps) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
   return (
-    <div 
-      className="group relative overflow-hidden rounded-3xl p-8 transition-all duration-500 hover:scale-105 animate-fade-in bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 hover:border-carrillo-blue-light/50 hover:shadow-2xl hover:shadow-carrillo-blue/20"
+    <div
+      className="group relative overflow-hidden rounded-3xl transition-all duration-500 hover:scale-[1.02] bg-white/5 border border-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-carrillo-blue/20"
+      onMouseMove={handleMouseMove}
       style={{ animationDelay: delay }}
     >
-      {/* Efecto de brillo al hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-carrillo-blue-light/0 to-carrillo-blue-dark/0 group-hover:from-carrillo-blue-light/10 group-hover:to-carrillo-blue-dark/10 transition-all duration-500" />
+      {/* Spotlight Effect */}
+      <motion.div
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              650px circle at ${mouseX}px ${mouseY}px,
+              rgba(157, 168, 197, 0.15),
+              transparent 80%
+            )
+          `,
+        }}
+      />
       
-      {/* Línea animada superior */}
-      <div className="absolute top-0 left-0 w-0 h-1 bg-gradient-to-r from-carrillo-blue-light to-carrillo-blue-dark group-hover:w-full transition-all duration-700" />
-      
-      <div className="relative z-10">
-        {/* Icono con animación */}
-        <div className="text-6xl mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-          {icon}
+      <div className="relative h-full p-8 z-10 flex flex-col">
+        {/* Icono con contenedor glass */}
+        <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-transparent border border-white/10 shadow-inner group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+          <div className="text-carrillo-blue-light group-hover:text-white transition-colors duration-300">
+            {icon}
+          </div>
         </div>
         
         {/* Título */}
@@ -33,13 +54,13 @@ export default function ServiceCard({ icon, title, description, delay = '0s' }: 
         </h3>
         
         {/* Descripción */}
-        <p className="text-carrillo-gray text-sm leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+        <p className="text-carrillo-gray text-base leading-relaxed group-hover:text-white/90 transition-colors duration-300">
           {description}
         </p>
+
+        {/* Decoración sutil */}
+        <div className="absolute top-8 right-8 w-20 h-20 bg-carrillo-blue-light/5 rounded-full blur-3xl group-hover:bg-carrillo-blue-light/20 transition-all duration-700" />
       </div>
-      
-      {/* Efecto decorativo esquina */}
-      <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-carrillo-blue-light/10 rounded-full blur-2xl group-hover:scale-150 transition-all duration-500" />
     </div>
   );
 }

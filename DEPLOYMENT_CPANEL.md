@@ -1,53 +1,46 @@
-# 🚀 GUÍA DE DEPLOYMENT A CPANEL - HOSTGATOR
+# Guía de Deployment - cPanel/HostGator
 
-## ✅ Estado del Proyecto
+## Estado: ✅ Listo para Deploy
 
-**¡Landing Page "Coming Soon" Completada!**
-
-La página está **100% lista** para ser desplegada en cPanel de HostGator. Todos los archivos estáticos están generados en la carpeta `out/`.
+Landing page compilada con archivos estáticos en carpeta `out/` lista para subir a cPanel.
 
 ---
 
-## 📦 Archivos Estáticos Generados
+## 📦 Pre-requisitos
 
-Después de ejecutar `npm run build`, se creó la carpeta `out/` con todos los archivos HTML, CSS y JavaScript necesarios:
+1. **Build ejecutado:**
+   ```bash
+   npm run build
+   ```
+   Esto genera la carpeta `out/` con todos los archivos estáticos.
 
-```
-out/
-├── index.html          (Página principal)
-├── 404.html           (Página de error 404)
-├── sitemap.xml        (Sitemap para SEO)
-├── robots.txt         (Configuración para bots)
-├── logo-carrillo.svg  (Logo de Carrillo Abogados)
-├── _next/             (Assets de Next.js - CSS, JS, etc.)
-└── ...
-```
+2. **Acceso a cPanel:**
+   - URL: `https://tu-dominio.com/cpanel` o `https://tu-hosting.com:2083`
+   - Usuario y contraseña de HostGator
 
 ---
 
-## 🎯 PASOS PARA SUBIR A CPANEL
+## 🚀 Proceso de Deployment
 
-### Opción 1: Usando el Administrador de Archivos de cPanel
+### Paso 1: Compilar el Proyecto
 
-1. **Accede a cPanel de HostGator**
-   - URL: `https://tu-hosting.com:2083` o `https://tu-dominio.com/cpanel`
-   - Usuario y contraseña proporcionados por HostGator
+```bash
+cd "C:\GitHub Desktop\Frontend---CarrilloAbogados"
+npm run build
+```
 
-2. **Ve al Administrador de Archivos**
-   - En cPanel, busca "Administrador de archivos" o "File Manager"
-   - Click en el ícono
+**Resultado:** Carpeta `out/` con:
+- `index.html` (página principal)
+- `404.html` (página de error)
+- `_next/` (JS, CSS, assets)
+- `logo-carrillo.jpg`
+- `robots.txt`, `sitemap.xml`
 
-3. **Navega a la carpeta de tu dominio**
-   - Normalmente es `public_html/` para el dominio principal
-   - Si es un subdominio, busca la carpeta correspondiente
+### Paso 2: Acceder a cPanel File Manager
 
-4. **IMPORTANTE: Limpia la carpeta primero**
-   - Selecciona todos los archivos existentes en `public_html/`
-   - Click derecho → Eliminar (o Delete)
-   - Esto asegura que no haya conflictos
-
-5. **Sube los archivos**
-   - Click en el botón "Cargar" o "Upload" (arriba a la derecha)
+1. Iniciar sesión en cPanel de HostGator
+2. Buscar "File Manager" o "Administrador de Archivos"
+3. Navegar a `public_html/` (dominio principal)
    - **Arrastra TODA la carpeta `out/`** desde tu computadora
    - O selecciona todos los archivos dentro de `out/` y súbelos
    
