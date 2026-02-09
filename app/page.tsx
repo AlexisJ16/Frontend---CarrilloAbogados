@@ -71,7 +71,7 @@ export default function Home() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-carrillo-blue-light opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-carrillo-blue-light"></span>
                 </span>
-                <span className="text-xs uppercase tracking-[0.2em] text-carrillo-blue-light font-bold">Lanzamiento Oficial</span>
+                <span className="text-xs uppercase tracking-[0.2em] text-carrillo-blue-light font-bold">Relanzamiento oficial</span>
               </div>
             </div>
 
@@ -91,18 +91,19 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Countdown integrado */}
-            <div className="relative animate-fade-in" style={{ animationDelay: '0.8s' }}>
+            {/* Countdown integrado con Fecha Esperada */}
+            <div className="relative animate-fade-in flex flex-col items-center" style={{ animationDelay: '0.8s' }}>
               <Countdown />
+              <div className="mt-8 text-center animate-fade-in" style={{ animationDelay: '1.2s' }}>
+                <p className="text-carrillo-blue-light text-sm uppercase tracking-widest font-bold mb-1">Fecha esperada</p>
+                <p className="text-2xl text-white font-light">27 de Marzo de 2026</p>
+              </div>
             </div>
 
           </div>
           
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce-slow">
-            <span className="text-[10px] uppercase tracking-widest text-carrillo-gray/50">Explorar</span>
-            <div className="w-px h-12 bg-gradient-to-b from-carrillo-gray/50 to-transparent"></div>
-          </div>
+          {/* Scroll Indicator Eliminado (Espacio reservado para flujo) */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent z-20 pointer-events-none" />
         </section>
 
         {/* Sección de servicios PROTAGONISTA */}
@@ -202,8 +203,22 @@ export default function Home() {
         <footer className="py-12 border-t border-white/5 text-center text-sm text-carrillo-gray/40">
           <p className="mb-4">© 2026 Carrillo Abogados S.A.S. Todos los derechos reservados.</p>
           <div className="flex justify-center gap-8">
-             <a href="mailto:director@carrilloabgd.com" className="hover:text-white transition-colors">Director</a>
-             <a href="mailto:asesora@carrilloabgd.com" className="hover:text-white transition-colors">Asesoría</a>
+             <a 
+               href="https://mail.google.com/mail/?view=cm&fs=1&to=director@carrilloabgd.com" 
+               target="_blank"
+               rel="noopener noreferrer"
+               className="hover:text-white transition-colors"
+             >
+               Director
+             </a>
+             <a 
+               href="https://mail.google.com/mail/?view=cm&fs=1&to=asesora@carrilloabgd.com" 
+               target="_blank"
+               rel="noopener noreferrer"
+               className="hover:text-white transition-colors"
+             >
+               Asesoría
+             </a>
           </div>
         </footer>
 

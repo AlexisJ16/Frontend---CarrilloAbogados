@@ -1,116 +1,220 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState, useRef } from 'react';
 import BrandLogo from './BrandLogo';
 
 interface SplashScreenProps {
   onComplete: () => void;
 }
 
+// Generar partículas aleatorias para el fondo
+const particleCount = 20;
+const particles = Array.from({ length: particleCount }).map((_, i) => ({
+  id: i,
+  x: Math.random() * 100,
+  y: Math.random() * 100,
+  size: Math.random() * 2 + 1,
+  duration: Math.random() * 20 + 10,
+}));
+
 export default function SplashScreen({ onComplete }: SplashScreenProps) {
+  const [stage, setStage] = useState<'initial' | 'reveal' | 'holding' | 'exit'>('initial');
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    // Secuencia de tiempo
+    const timings = [
+      setTimeout(() => setStage('reveal'), 500),
+      setTimeout(() => setStage('holding'), 2000),
+      setTimeout(() => setStage('exit'), 4500),
+      setTimeout(onComplete, 5500),
+    ];
+
+    // Barra de progreso simulada
+    const progressInterval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(progressInterval);
+          return 100;
+        }
+        // Velocidad variable para realismo
+        const increment = Math.random() * 5; 
+        return Math.min(prev + increment, 100);
+      });
+    }, 150);
+
+    return () => {
+      timings.forEach(clearTimeout);
+      clearInterval(progressInterval);
+    };
+  }, [onComplete]);
+
+  // Variantes de texto
+  const letterContainer = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.5,
+      },
+    },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.5 } }
+  };
+
+  const letterItem = {
+    hidden: { y: 20, opacity: 0, filter: 'blur(10px)' },
+    show: { y: 0, opacity: 1, filter: 'blur(0px)' },
+  };
+
   return (
     <motion.div 
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#020205] overflow-hidden"
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-auto"
+      exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
     >
-      {/* Overlay con blur */}
-      <motion.div 
-        initial={{ backdropFilter: 'blur(0px)' }}
-        animate={{ backdropFilter: 'blur(12px)' }}
-        exit={{ backdropFilter: 'blur(0px)' }}
-        transition={{ duration: 0.8 }}
-        className="absolute inset-0 bg-black/60"
-      />
+      {/* --- CINEMATIC BACKGROUND --- */}
+      <div className="absolute inset-0 z-0">
+        {/* Nebulosa azul profunda */}
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+            rotate: [0, 5, 0]
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] bg-carrillo-blue-dark/30 rounded-full blur-[120px]" 
+        />
+        {/* Nebulosa cian acento */}
+        <motion.div 
+          animate={{ 
+            x: [0, 50, 0],
+            y: [0, -50, 0],
+            opacity: [0.1, 0.3, 0.1]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-carrillo-blue/20 rounded-full blur-[100px]" 
+        />
+        
+        {/* Partículas flotantes sutiles */}
+        {particles.map((p) => (
+          <motion.div
+            key={p.id}
+            className="absolute rounded-full bg-white/30"
+            style={{ 
+              left: `${p.x}%`, 
+              top: `${p.y}%`, 
+              width: p.size, 
+              height: p.size 
+            }}
+            animate={{ 
+              y: [0, -100, 0], 
+              opacity: [0, 1, 0] 
+            }}
+            transition={{ 
+              duration: p.duration, 
+              repeat: Infinity, 
+              ease: "linear",
+              delay: Math.random() * 5 
+            }}
+          />
+        ))}
 
-      {/* Cuadro de bienvenida que entra volando */}
-      <motion.div
-        initial={{ x: '-100vw', opacity: 0, scale: 0.8, rotate: -15 }}
-        animate={{ 
-          x: 0, 
-          opacity: 1, 
-          scale: 1, 
-          rotate: 0,
-          transition: {
-            type: 'spring',
-            damping: 20,
-            stiffness: 100,
-            duration: 1.2
-          }
-        }}
-        className="relative z-10 max-w-2xl mx-4 bg-gradient-to-br from-[#000000] via-[#66728D] to-[#51679C] rounded-3xl shadow-2xl border border-white/20 overflow-hidden"
-      >
-        {/* Contenido del cuadro */}
-        <div className="p-8 md:p-12">
-          {/* Logo y título unificado con layoutId para animación */}
-          <div className="flex justify-center mb-8">
-            <BrandLogo variant="splash" layoutId="brand-logo" />
-          </div>
+        {/* Textura de ruido overlay */}
+        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay" />
+        
+        {/* Viñeta cinematográfica */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#020205_90%)]" />
+      </div>
 
-          {/* Mensaje de bienvenida */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            className="text-center space-y-4 mb-8"
-          >
-            <div className="inline-block p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-4">
-              <span className="text-5xl animate-bounce-slow">👋</span>
-            </div>
-            
-            <h2 className="text-3xl md:text-4xl font-black text-white">
-              ¡Bienvenido!
-            </h2>
-            
-            <p className="text-lg text-carrillo-blue-light leading-relaxed max-w-md mx-auto">
-              Estás a punto de descubrir la plataforma legal más innovadora de Colombia
-            </p>
+      {/* --- MAIN CONTENT --- */}
+      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-4xl px-4">
+        
+        {/* 1. Logo Sequence */}
+        <motion.div
+           layoutId="brand-logo"
+           initial={{ scale: 0.8, opacity: 0, filter: 'blur(20px)' }}
+           animate={{ 
+             scale: stage === 'exit' ? 0.9 : 1.3, // Mantiene presencia
+             opacity: stage === 'exit' ? 0 : 1, 
+             filter: 'blur(0px)',
+             y: stage === 'exit' ? -100 : 0
+           }}
+           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+           className="mb-12 relative"
+        >
+          {/* Efecto de fulgor detrás del logo */}
+          <div className="absolute inset-0 bg-carrillo-blue-light/50 blur-3xl opacity-20 animate-pulse-slow" />
+          <BrandLogo variant="splash" hideText={true} />
+        </motion.div>
 
-            <div className="flex items-center justify-center gap-2 text-sm text-carrillo-gray">
-              <div className="w-2 h-2 rounded-full bg-carrillo-blue-light animate-pulse"></div>
-              <span>23 años de excelencia transformándose en digital</span>
-            </div>
-          </motion.div>
-
-          {/* Botón para continuar */}
-          <motion.button
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.9, duration: 0.4 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={onComplete}
-            className="w-full py-4 px-8 bg-gradient-to-r from-carrillo-blue-light to-carrillo-blue-dark rounded-full text-white font-bold text-lg shadow-lg hover:shadow-carrillo-blue/50 transition-all relative overflow-hidden group"
-          >
-            {/* Efecto shimmer en el botón */}
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
-            <span className="relative flex items-center justify-center gap-3">
-              <span>Explorar Ahora</span>
-              <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
+        {/* 2. Typography Reveal - Staggered Letters */}
+        <div className="h-24 md:h-32 flex flex-col justify-center items-center overflow-hidden">
+          <AnimatePresence mode="wait">
+            {stage !== 'exit' && (
+              <motion.div
+                variants={letterContainer}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+                className="flex flex-col items-center gap-4"
               >
-                →
-              </motion.span>
-            </span>
-          </motion.button>
+                <div className="flex overflow-hidden">
+                  {Array.from("CARRILLO ABOGADOS").map((char, i) => (
+                    <motion.span
+                      key={i}
+                      variants={letterItem}
+                      className={`text-3xl md:text-6xl font-black text-white tracking-wider ${char === " " ? "w-4" : ""}`}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </div>
 
-          {/* Texto secundario */}
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-            className="text-center text-xs text-carrillo-gray mt-4"
-          >
-            Lanzamiento: Marzo 2026
-          </motion.p>
+                <motion.div 
+                  initial={{ width: 0, opacity: 0 }}
+                  animate={{ width: "100%", opacity: 1 }}
+                  transition={{ delay: 1.2, duration: 1 }}
+                  className="h-[1px] bg-gradient-to-r from-transparent via-carrillo-blue-light to-transparent w-full max-w-md"
+                />
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.5, duration: 0.8 }}
+                  className="flex items-center gap-3"
+                >
+                  <span className="text-carrillo-gray text-sm md:text-base tracking-[0.2em] font-light uppercase">
+                    Firma Legal Digital
+                  </span>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        {/* Decoración: efecto de brillo */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-carrillo-blue-light/20 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-carrillo-blue-dark/20 rounded-full blur-3xl -z-10" />
-      </motion.div>
+        {/* 3. Progress Bar & Loading Stats */}
+        <motion.div 
+          className="absolute bottom-10 md:bottom-20 w-full max-w-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: stage === 'exit' ? 0 : 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
+          <div className="flex justify-between text-[10px] text-carrillo-gray font-mono mb-2 uppercase tracking-widest">
+            <span>Cargando Experiencia</span>
+            <span>{Math.round(progress)}%</span>
+          </div>
+          <div className="h-[2px] w-full bg-white/10 rounded-full overflow-hidden">
+            <motion.div 
+              className="h-full bg-gradient-to-r from-carrillo-blue to-carrillo-blue-light shadow-[0_0_15px_rgba(56,189,248,0.8)]"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        </motion.div>
+
+      </div>
     </motion.div>
   );
 }
+
