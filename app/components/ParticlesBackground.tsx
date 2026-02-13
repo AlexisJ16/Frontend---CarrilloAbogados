@@ -1,111 +1,122 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 export default function ParticlesBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animationRef = useRef<number>(0);
+
+  const getParticleCount = useCallback(() => {
+    if (typeof window === 'undefined') return 40;
+    const width = window.innerWidth;
+    if (width < 480) return 20;
+    if (width < 768) return 30;
+    if (width < 1024) return 50;
+    return 70;
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    let dpr = window.devicePixelRatio || 1;
+    let canvasWidth = window.innerWidth;
+    let canvasHeight = window.innerHeight;
 
-    const canvasWidth = canvas.width;
-    const canvasHeight = canvas.height;
-
-    const particles: Particle[] = [];
-    const particleCount = 80;
-    const connectionDistance = 150;
-
-    class Particle {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      radius: number;
-
-      constructor() {
-        this.x = Math.random() * canvasWidth;
-        this.y = Math.random() * canvasHeight;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.radius = Math.random() * 2 + 1;
-      }
-
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        if (this.x < 0 || this.x > canvasWidth) this.vx *= -1;
-        if (this.y < 0 || this.y > canvasHeight) this.vy *= -1;
-      }
-
-      draw() {
-        if (!ctx) return;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(157, 168, 197, 0.4)';
-        ctx.fill();
-      }
+    function resizeCanvas() {
+      if (!canvas) return;
+      dpr = window.devicePixelRatio || 1;
+      canvasWidth = window.innerWidth;
+      canvasHeight = window.innerHeight;
+      canvas.width = canvasWidth * dpr;
+      canvas.height = canvasHeight * dpr;
+      canvas.style.width = `${canvasWidth}px`;
+      canvas.style.height = `${canvasHeight}px`;
+      ctx!.scale(dpr, dpr);
     }
 
+    resizeCanvas();
+
+    const particleCount = getParticleCount();
+    const connectionDistance = canvasWidth < 768 ? 100 : 150;
+
+    // Particle data stored in typed arrays for performance
+    const x = new Float32Array(particleCount);
+    const y = new Float32Array(particleCount);
+    const vx = new Float32Array(particleCount);
+    const vy = new Float32Array(particleCount);
+    const radius = new Float32Array(particleCount);
+
     for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
+      x[i] = Math.random() * canvasWidth;
+      y[i] = Math.random() * canvasHeight;
+      vx[i] = (Math.random() - 0.5) * 0.4;
+      vy[i] = (Math.random() - 0.5) * 0.4;
+      radius[i] = Math.random() * 1.5 + 0.5;
     }
 
     function animate() {
-      if (!ctx || !canvas) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (!ctx) return;
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-      particles.forEach((particle, i) => {
-        particle.update();
-        particle.draw();
+      // Update and draw particles
+      for (let i = 0; i < particleCount; i++) {
+        x[i] += vx[i];
+        y[i] += vy[i];
 
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[j].x - particle.x;
-          const dy = particles[j].y - particle.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+        if (x[i] < 0 || x[i] > canvasWidth) vx[i] *= -1;
+        if (y[i] < 0 || y[i] > canvasHeight) vy[i] *= -1;
 
-          if (distance < connectionDistance) {
+        ctx.beginPath();
+        ctx.arc(x[i], y[i], radius[i], 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(157, 168, 197, 0.35)';
+        ctx.fill();
+
+        // Draw connections (only check forward to avoid duplicates)
+        for (let j = i + 1; j < particleCount; j++) {
+          const dx = x[j] - x[i];
+          const dy = y[j] - y[i];
+          const distSq = dx * dx + dy * dy;
+          const connDistSq = connectionDistance * connectionDistance;
+
+          if (distSq < connDistSq) {
+            const alpha = 0.12 * (1 - distSq / connDistSq);
             ctx.beginPath();
-            ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(102, 114, 141, ${0.15 * (1 - distance / connectionDistance)})`;
-            ctx.lineWidth = 1;
+            ctx.moveTo(x[i], y[i]);
+            ctx.lineTo(x[j], y[j]);
+            ctx.strokeStyle = `rgba(102, 114, 141, ${alpha})`;
+            ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         }
-      });
+      }
 
-      requestAnimationFrame(animate);
+      animationRef.current = requestAnimationFrame(animate);
     }
 
-    animate();
+    animationRef.current = requestAnimationFrame(animate);
 
     const handleResize = () => {
-      if (canvas) {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
+      resizeCanvas();
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
 
     return () => {
+      cancelAnimationFrame(animationRef.current);
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [getParticleCount]);
 
   return (
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
       style={{ opacity: 0.6 }}
+      aria-hidden="true"
     />
   );
 }
