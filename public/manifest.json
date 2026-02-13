@@ -1,0 +1,21 @@
+{
+  "name": "Carrillo Abogados",
+  "short_name": "Carrillo ABGD",
+  "description": "Firma Legal Digital — 23 años de experiencia legal en Cali, Colombia",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#51679C",
+  "icons": [
+    {
+      "src": "/logo-carrillo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/logo-carrillo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

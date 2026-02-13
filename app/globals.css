@@ -83,3 +83,10 @@ body::before {
   background: #9DA8C5;
 }
 
+/* Focus styles for keyboard navigation (a11y) */
+*:focus-visible {
+  outline: 2px solid #9DA8C5;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
