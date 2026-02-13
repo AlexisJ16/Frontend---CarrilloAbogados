@@ -30,40 +30,39 @@ export default function ServiceCard({ icon, title, description, index = 0 }: Ser
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
+      viewport={{ once: true, margin: '-40px' }}
       transition={{
-        duration: 0.6,
-        delay: index * 0.15,
+        duration: 0.4,
+        delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-carrillo-blue/20 transition-all duration-500 hover:scale-[1.02]"
+      className="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-carrillo-blue/20 transition-[border-color,box-shadow] duration-250 hover:scale-[1.02]"
       onMouseMove={handleMouseMove}
     >
       {/* Spotlight Effect */}
       <motion.div
-        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-200 group-hover:opacity-100"
         style={{ background: spotlightBg }}
       />
 
       <div className="relative h-full p-8 z-10 flex flex-col">
-        {/* Icon container */}
-        <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-transparent border border-white/10 shadow-inner group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-          <div className="text-carrillo-blue-light group-hover:text-white transition-colors duration-300">
+        <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-transparent border border-white/10 shadow-inner group-hover:scale-110 group-hover:rotate-3 transition-transform duration-250">
+          <div className="text-carrillo-blue-light group-hover:text-white transition-colors duration-200">
             {icon}
           </div>
         </div>
 
-        <h3 className="text-2xl font-black text-white mb-4 group-hover:text-carrillo-blue-light transition-colors duration-300">
+        <h3 className="text-2xl font-black text-white mb-4 group-hover:text-carrillo-blue-light transition-colors duration-200">
           {title}
         </h3>
 
-        <p className="text-carrillo-gray text-base leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+        <p className="text-carrillo-gray text-base leading-relaxed group-hover:text-white/90 transition-colors duration-200">
           {description}
         </p>
 
-        <div className="absolute top-8 right-8 w-20 h-20 bg-carrillo-blue-light/5 rounded-full blur-3xl group-hover:bg-carrillo-blue-light/20 transition-all duration-700" />
+        <div className="absolute top-8 right-8 w-20 h-20 bg-carrillo-blue-light/5 rounded-full blur-3xl group-hover:bg-carrillo-blue-light/20 transition-[background] duration-300" />
       </div>
     </motion.div>
   );
