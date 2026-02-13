@@ -2,18 +2,18 @@
 
 ## Proyectos y Stack Tecnológico
 - **Framework:** Next.js 15.5+ (App Router)
-- **Despliegue:** Exportación Estática (`output: 'export'`) a cPanel/HostGator
+- **Despliegue:** Vercel (capa gratuita) — conectado al repositorio GitHub
 - **Estilos:** Tailwind CSS 3.4+ con configuración personalizada
-- **Animación:** Framer Motion 11.x + Canvas API + CSS Animations
+- **Animación:** Framer Motion 12.x + Canvas API + CSS Animations
 - **Lenguaje:** TypeScript 5.4+
 
 ## Arquitectura y Visión General
-- **Solo Generación Estática:** Este proyecto está configurado con `output: 'export'`.
-  - **Prohibido:** Rutas API (`app/api`), `headers()`, `cookies()`, o middleware que dependa de un entorno de ejecución Node.js.
-  - **Obtención de Datos:** Debe hacerse en tiempo de construcción (static params) o del lado del cliente (useEffect/SWR).
+- **Despliegue en Vercel:** El proyecto se despliega en Vercel con todas las capacidades de Next.js habilitadas.
+  - **Permitido:** API Routes (`app/api/`), Server Components, middleware, headers(), cookies().
+  - **Obtención de Datos:** Se pueden usar Server Components, API Routes, o fetch del lado del cliente.
   - **Prevención de Hidratación:** Cualquier elemento que use `Math.random()` o fechas dinámicas DEBE generarse dentro de un `useEffect` para evitar errores de Hydration Mismatch entre servidor y cliente.
-- **Manejo de Activos:** Las imágenes tienen `unoptimized: true` en `next.config.js`. Usa `next/image` pero entiende que renderizará etiquetas `<img>` estándar sin servicios de optimización bajo demanda.
-- **Enrutamiento:** Utiliza la estructura estándar de App Router. `trailingSlash: true` está habilitado para compatibilidad con cPanel.
+- **Manejo de Activos:** Las imágenes PUEDEN usar optimización de Next.js (Vercel lo soporta). Usa `next/image` con formatos webp/avif.
+- **Enrutamiento:** Utiliza la estructura estándar de App Router.
 
 ## Patrones Clave y Convenciones
 
@@ -28,20 +28,22 @@
 
 ### 2. Animaciones (Framer Motion)
 - **Shared Layouts:** Usa la prop `layoutId` en `motion.div` para animar componentes que se mueven entre diferentes partes del DOM (ej. `BrandLogo` moviéndose del Splash al Header).
-  - Ejemplo: Ver `app/components/BrandLogo.tsx`.
-- **Transiciones de Página:** Usa `AnimatePresence` en `app/page.tsx` o wrappers de layout para manejar animaciones de montaje/desmontaje de componentes.
-- **Rendimiento:** Para fondos complejos (partículas), prefiere componentes basados en API `Canvas` (ej. `ParticlesBackground.tsx`) sobre manipulación pesada del DOM.
+- **Scroll Animations:** Usa `useInView` de Framer Motion para animaciones triggered por scroll.
+- **Transiciones de Página:** Usa `AnimatePresence` para manejar animaciones de montaje/desmontaje.
+- **Rendimiento:** Para fondos complejos (partículas), prefiere componentes basados en Canvas API sobre manipulación pesada del DOM.
 
 ### 3. Estructura de Componentes
 - **Ubicación:** Los componentes están co-ubicados en `app/components/`.
-- **Componentes de Cliente:** La mayoría de componentes UI con animación/interactividad deben usar la directiva `'use client'`.
+- **Server Components por defecto:** Solo usar `'use client'` cuando sea estrictamente necesario (interactividad, hooks de estado, animaciones).
 - **Diseño Responsivo:** Enfoque Mobile-first. Usa prefijos `md:` y `lg:` para layouts de tablet/escritorio.
 
 ## Flujos de Trabajo del Desarrollador
-- **Build:** Ejecuta `npm run build` para generar el directorio `out/`. Esta carpeta es el **único** entregable para producción.
-- **Integración WhatsApp:** Las referencias a WhatsApp deben seguir el formato en `CONFIGURACION_WHATSAPP.md`.
+- **Build:** `npm run build` para build de producción. Vercel lo ejecuta automáticamente al hacer push.
+- **Deploy:** Push a `main` → Vercel despliega automáticamente.
+- **Variables de entorno:** Ver `.env.example` para la lista completa. Configurar en Vercel Dashboard.
 - **Linting:** Se aplican las reglas estándar de `next lint`.
 
-## Tareas Comunes
-- **Actualizar Contenido:** El contenido está actualmente hardcodeado en componentes (ej. `LegalFactsModal.tsx`, `ServiceCard.tsx`). Actualiza el texto directamente en archivos TSX.
-- **Agregar Servicios:** Duplica el patrón en `app/page.tsx` usando componentes `ServiceCard`. Asegúrate de que los efectos hover coincidan con las tarjetas existentes.
+## Documentación del Proyecto
+- **CLAUDE.md** — Instrucciones detalladas para Claude Code (misión completa)
+- **ESTADO_ACTUAL.md** — Estado actual del desarrollo y checklist
+- **.env.example** — Variables de entorno necesarias

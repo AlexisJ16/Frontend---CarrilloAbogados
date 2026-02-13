@@ -183,7 +183,7 @@ export default function Home() {
                  </h3>
                  <p className="text-carrillo-blue-light font-medium mb-6 uppercase tracking-wider text-sm">Socio Fundador</p>
                  <p className="text-carrillo-gray leading-relaxed text-lg font-light italic">
-                   "La abogacía no puede seguir siendo lenta y reactiva. Estamos construyendo el sistema legal que Colombia merece: transparente, inmediato y eficaz."
+                   &ldquo;La abogacía no puede seguir siendo lenta y reactiva. Estamos construyendo el sistema legal que Colombia merece: transparente, inmediato y eficaz.&rdquo;
                  </p>
                </div>
              </div>
