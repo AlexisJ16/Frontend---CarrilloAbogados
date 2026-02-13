@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import SmoothScroll from "./components/SmoothScroll";
 import JsonLd from "./components/JsonLd";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 import "./globals.css";
 
 const siteUrl = "https://carrilloabgd.com";
@@ -89,6 +90,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
         <JsonLd />
+        <GoogleAnalytics />
       </head>
       <body className="font-lato">
         <SmoothScroll />
