@@ -33,8 +33,8 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#020205_100%)]" />
       </div>
 
-      {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-5xl px-4">
+      {/* Main content — centered block with bottom padding to leave room for status */}
+      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-5xl px-4 pb-32">
 
         {/* Logo */}
         <motion.div
@@ -52,7 +52,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
           <BrandLogo variant="splash" hideText={true} />
         </motion.div>
 
-        {/* Title - simple fade, no per-letter blur */}
+        {/* Title */}
         <AnimatePresence mode="wait">
           {stage !== 'exit' && (
             <motion.div
@@ -84,40 +84,39 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Connection status - bigger, more visible */}
-        <motion.div
-          className="absolute bottom-10 sm:bottom-12 text-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: stage === 'exit' ? 0 : 1 }}
-          transition={{ delay: 1, duration: 0.4 }}
-        >
-          <div className="flex items-center justify-center gap-3 mb-3">
-            <motion.div
-              className="w-1.5 h-1.5 bg-carrillo-blue-light rounded-full"
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
-            />
-            <span className="text-white/50 text-xs sm:text-sm font-medium uppercase tracking-[0.25em]">
-              Estableciendo Conexión Segura
-            </span>
-            <motion.div
-              className="w-1.5 h-1.5 bg-carrillo-blue-light rounded-full"
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
-            />
-          </div>
-          {/* Progress bar */}
-          <div className="w-40 sm:w-48 h-[2px] bg-white/10 rounded-full mx-auto overflow-hidden">
-            <motion.div
-              className="h-full bg-gradient-to-r from-carrillo-blue-light to-white/60 rounded-full"
-              initial={{ width: '0%' }}
-              animate={{ width: '100%' }}
-              transition={{ duration: 2.5, ease: 'easeInOut' }}
-            />
-          </div>
-        </motion.div>
       </div>
+
+      {/* Connection status — fixed to bottom of splash, outside center block */}
+      <motion.div
+        className="absolute bottom-8 sm:bottom-10 left-0 right-0 z-10 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: stage === 'exit' ? 0 : 1 }}
+        transition={{ delay: 1, duration: 0.4 }}
+      >
+        <div className="flex items-center justify-center gap-3 mb-3">
+          <motion.div
+            className="w-1.5 h-1.5 bg-carrillo-blue-light rounded-full"
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <span className="text-white/50 text-xs sm:text-sm font-medium uppercase tracking-[0.25em]">
+            Estableciendo Conexión Segura
+          </span>
+          <motion.div
+            className="w-1.5 h-1.5 bg-carrillo-blue-light rounded-full"
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
+          />
+        </div>
+        <div className="w-40 sm:w-48 h-[2px] bg-white/10 rounded-full mx-auto overflow-hidden">
+          <motion.div
+            className="h-full bg-gradient-to-r from-carrillo-blue-light to-white/60 rounded-full"
+            initial={{ width: '0%' }}
+            animate={{ width: '100%' }}
+            transition={{ duration: 2.5, ease: 'easeInOut' }}
+          />
+        </div>
+      </motion.div>
     </motion.div>
   );
 }
