@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | Carrillo Abogados",
   },
   description:
-    "Carrillo ABGD SAS — 23 años de experiencia legal en Cali. Especialistas en marcas, patentes, derecho corporativo, contratación estatal y telecomunicaciones. Primera firma legal 100% digital de Colombia. Coming Marzo 2026.",
+    "Carrillo ABGD SAS — 23 años de experiencia legal en Cali. Especialistas en registro de marcas, propiedad intelectual, contratación estatal y licitación pública. Primera firma legal 100% digital de Colombia. Relanzamiento Abril 2026.",
   keywords: [
     "Abogados Cali",
     "Registro de marcas Colombia",
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     "Legal tech Colombia",
     "Bufete especializado Cali",
     "Derecho administrativo Colombia",
-    "Telecomunicaciones legal",
-    "Derecho de competencias",
+    "Licitación pública Colombia",
+    "Abogados licitaciones Cali",
     "Carrillo Abogados",
     "Firma legal digital",
   ],

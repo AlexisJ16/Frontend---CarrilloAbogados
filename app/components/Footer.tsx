@@ -18,11 +18,10 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Servicios</h4>
             <ul className="space-y-2 text-sm text-carrillo-gray/60">
-              <li>Marcas y Patentes</li>
-              <li>Derecho Corporativo</li>
+              <li>Registro de Marcas</li>
+              <li>Propiedad Intelectual</li>
               <li>Contratación Estatal</li>
-              <li>Telecomunicaciones Legal</li>
-              <li>Derecho de Competencias</li>
+              <li>Licitación Pública</li>
             </ul>
           </div>
 
@@ -69,7 +68,8 @@ export default function Footer() {
               <p className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" aria-hidden="true" />
                 <span>
-                  Cra. 40 #27-26, Torre de Cali,<br />
+                  Calle 19 N 2N - 29,<br />
+                  Edificio Torre de Cali,<br />
                   Piso 21, Oficina 2102A<br />
                   Cali, Valle del Cauca, Colombia
                 </span>

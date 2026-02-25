@@ -23,7 +23,7 @@ export default function ServiceCard({ icon, title, description, index = 0 }: Ser
   const spotlightBg = useMotionTemplate`
     radial-gradient(
       650px circle at ${mouseX}px ${mouseY}px,
-      rgba(157, 168, 197, 0.15),
+      rgba(0, 242, 255, 0.07),
       transparent 80%
     )
   `;
@@ -38,7 +38,7 @@ export default function ServiceCard({ icon, title, description, index = 0 }: Ser
         delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-carrillo-blue/20 transition-[border-color,box-shadow] duration-250 hover:scale-[1.02]"
+      className="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 hover:border-carrillo-cyan/20 hover:shadow-2xl hover:shadow-carrillo-cyan/10 transition-[border-color,box-shadow] duration-250 hover:scale-[1.02]"
       onMouseMove={handleMouseMove}
     >
       {/* Spotlight Effect */}
@@ -48,10 +48,12 @@ export default function ServiceCard({ icon, title, description, index = 0 }: Ser
       />
 
       <div className="relative h-full p-8 z-10 flex flex-col">
-        <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-transparent border border-white/10 shadow-inner group-hover:scale-110 group-hover:rotate-3 transition-transform duration-250">
+        <div className="mb-6 relative inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-transparent border border-white/10 shadow-inner group-hover:scale-110 group-hover:rotate-3 transition-transform duration-250">
           <div className="text-carrillo-blue-light group-hover:text-white transition-colors duration-200">
             {icon}
           </div>
+          {/* Cian accent dot — Manual de Marca: 90% base, 10% acento */}
+          <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-carrillo-cyan opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
         </div>
 
         <h3 className="text-2xl font-black text-white mb-4 group-hover:text-carrillo-blue-light transition-colors duration-200">

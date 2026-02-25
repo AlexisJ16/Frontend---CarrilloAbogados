@@ -17,10 +17,10 @@ export default function HeroSection() {
         >
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-carrillo-blue-light opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-carrillo-blue-light"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-carrillo-cyan opacity-60"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-carrillo-cyan"></span>
             </span>
-            <span className="text-xs uppercase tracking-[0.2em] text-carrillo-blue-light font-bold">Relanzamiento oficial</span>
+            <span className="text-xs uppercase tracking-[0.2em] text-carrillo-blue-light font-bold">Relanzamiento oficial — 1ª Firma 100% Digital de Colombia</span>
           </div>
         </motion.div>
 
@@ -44,8 +44,11 @@ export default function HeroSection() {
             transition={{ duration: 0.4, delay: 0.4 }}
             className="text-lg sm:text-xl md:text-2xl text-carrillo-gray/80 font-light max-w-3xl mx-auto leading-relaxed px-2"
           >
-            23 años de litigio tradicional evolucionan hacia la{' '}
-            <span className="text-white font-medium">primera firma legal 100% digital</span> de Colombia.
+            Nuestra solidez se basa en{' '}
+            <span className="text-white font-medium">23 años de experiencia legal</span>{' '}
+            que nos impulsó a evolucionar y ser hoy la{' '}
+            <span className="text-white font-medium">primera firma 100% Digital de Colombia</span>,
+            garantizando un servicio de vanguardia.
           </motion.p>
         </motion.div>
 
@@ -63,8 +66,8 @@ export default function HeroSection() {
             transition={{ duration: 0.4, delay: 0.6 }}
             className="mt-6 sm:mt-8 text-center"
           >
-            <p className="text-carrillo-blue-light text-sm uppercase tracking-widest font-bold mb-1">Fecha esperada</p>
-            <p className="text-xl sm:text-2xl text-white font-light">27 de Marzo de 2026</p>
+            <p className="text-carrillo-blue-light text-sm uppercase tracking-widest font-bold mb-1">Fecha esperada de relanzamiento</p>
+            <p className="text-xl sm:text-2xl text-white font-light">10 de Abril de 2026</p>
           </motion.div>
         </motion.div>
       </div>

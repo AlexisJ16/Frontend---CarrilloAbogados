@@ -46,7 +46,7 @@ export default function SubscriptionForm() {
 
   return (
     <div className="relative">
-      <div className="absolute -inset-4 bg-gradient-to-r from-carrillo-blue-light/20 to-carrillo-blue-dark/20 rounded-3xl blur-2xl opacity-50" />
+      <div className="absolute -inset-4 bg-gradient-to-r from-carrillo-cyan/10 via-carrillo-blue-light/20 to-carrillo-violet/10 rounded-3xl blur-2xl opacity-50" />
 
       <form onSubmit={handleSubmit} className="relative w-full max-w-3xl mx-auto p-6 sm:p-8 md:p-12 rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 space-y-6">
 
@@ -65,7 +65,7 @@ export default function SubscriptionForm() {
                 onBlur={() => setFocusedField(null)}
                 className="w-full px-5 sm:px-6 py-3.5 sm:py-4 bg-white/5 backdrop-blur-sm border-2 border-white/20 rounded-2xl text-white placeholder-carrillo-gray/60 focus:outline-none focus:border-carrillo-blue-light focus:bg-white/10 transition-all duration-300"
               />
-              <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-carrillo-blue-light to-carrillo-blue-dark transition-all duration-300 ${focusedField === 'nombre' ? 'w-full' : 'w-0'}`} />
+              <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-carrillo-cyan to-carrillo-blue-light transition-all duration-300 ${focusedField === 'nombre' ? 'w-full' : 'w-0'}`} />
             </div>
           </div>
 
@@ -83,7 +83,7 @@ export default function SubscriptionForm() {
                 onBlur={() => setFocusedField(null)}
                 className="w-full px-5 sm:px-6 py-3.5 sm:py-4 bg-white/5 backdrop-blur-sm border-2 border-white/20 rounded-2xl text-white placeholder-carrillo-gray/60 focus:outline-none focus:border-carrillo-blue-light focus:bg-white/10 transition-all duration-300"
               />
-              <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-carrillo-blue-light to-carrillo-blue-dark transition-all duration-300 ${focusedField === 'email' ? 'w-full' : 'w-0'}`} />
+              <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-carrillo-cyan to-carrillo-blue-light transition-all duration-300 ${focusedField === 'email' ? 'w-full' : 'w-0'}`} />
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@ export default function SubscriptionForm() {
                 onBlur={() => setFocusedField(null)}
                 className="w-full px-5 sm:px-6 py-3.5 sm:py-4 bg-white/5 backdrop-blur-sm border-2 border-white/20 rounded-2xl text-white placeholder-carrillo-gray/60 focus:outline-none focus:border-carrillo-blue-light focus:bg-white/10 transition-all duration-300"
               />
-              <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-carrillo-blue-light to-carrillo-blue-dark transition-all duration-300 ${focusedField === 'telefono' ? 'w-full' : 'w-0'}`} />
+              <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-carrillo-cyan to-carrillo-blue-light transition-all duration-300 ${focusedField === 'telefono' ? 'w-full' : 'w-0'}`} />
             </div>
           </div>
 
@@ -119,13 +119,12 @@ export default function SubscriptionForm() {
                 style={{ colorScheme: 'dark' }}
               >
                 <option value="" className="bg-carrillo-blue-dark text-white">Servicio de interés</option>
-                <option value="marcas" className="bg-carrillo-blue-dark text-white">Registro de Marcas y Patentes</option>
-                <option value="administrativo" className="bg-carrillo-blue-dark text-white">Derecho Administrativo</option>
-                <option value="corporativo" className="bg-carrillo-blue-dark text-white">Derecho Corporativo</option>
-                <option value="competencias" className="bg-carrillo-blue-dark text-white">Derecho de Competencias</option>
-                <option value="telecomunicaciones" className="bg-carrillo-blue-dark text-white">Derecho de Telecomunicaciones</option>
+                <option value="marcas" className="bg-carrillo-blue-dark text-white">Registro de Marcas</option>
+                <option value="propiedad-intelectual" className="bg-carrillo-blue-dark text-white">Propiedad Intelectual</option>
+                <option value="contratacion-estatal" className="bg-carrillo-blue-dark text-white">Contratación Estatal</option>
+                <option value="licitacion-publica" className="bg-carrillo-blue-dark text-white">Licitación Pública</option>
               </select>
-              <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-carrillo-blue-light to-carrillo-blue-dark transition-all duration-300 ${focusedField === 'servicio' ? 'w-full' : 'w-0'}`} />
+              <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-carrillo-cyan to-carrillo-blue-light transition-all duration-300 ${focusedField === 'servicio' ? 'w-full' : 'w-0'}`} />
             </div>
           </div>
         </div>
@@ -133,7 +132,7 @@ export default function SubscriptionForm() {
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="group relative w-full px-8 py-4 sm:py-5 bg-gradient-to-r from-carrillo-blue-light to-carrillo-blue-dark text-white font-black text-base sm:text-lg rounded-2xl overflow-hidden transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl hover:shadow-2xl hover:shadow-carrillo-blue/40"
+          className="group relative w-full px-8 py-4 sm:py-5 bg-carrillo-orange text-white font-black text-base sm:text-lg rounded-2xl overflow-hidden transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl hover:shadow-2xl hover:shadow-carrillo-orange/40 hover:brightness-110"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
           <span className="relative z-10 flex items-center justify-center gap-3">

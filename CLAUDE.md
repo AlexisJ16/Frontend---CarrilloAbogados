@@ -3,7 +3,7 @@
 ## Identidad del Proyecto
 
 **Proyecto:** Carrillo Abogados (Carrillo ABGD SAS) — Landing Page Profesional  
-**Propósito:** Página web de alto impacto visual para firma legal líder en Colombia. Actualmente en fase "Coming Soon" con lanzamiento previsto el 27 de Marzo de 2026.  
+**Propósito:** Página web de alto impacto visual para firma legal líder en Colombia. Actualmente en fase "Coming Soon" con lanzamiento previsto el 10 de Abril de 2026.  
 **Dominio:** carrilloabgd.com  
 **Repositorio:** AlexisJ16/Frontend---CarrilloAbogados  
 **Despliegue:** Vercel (capa gratuita) — conectado al repositorio GitHub.
@@ -43,11 +43,15 @@
 
 ### Identidad Visual
 - **Concepto:** "Cinemático y Alto Contraste" — fondos oscuros sólidos con efectos de luz.
-- **Paleta:** Usar ESTRICTAMENTE los colores del `tailwind.config.ts`:
+- **Paleta Principal ("El Ancla de Confianza"):** Usar ESTRICTAMENTE los colores del `tailwind.config.ts`:
   - Primarios: `text-carrillo-blue`, `bg-carrillo-blue-dark`
   - Fondos: `#020205` (Splash), `#050505` (Main), `#0A0F1E` (Tarjetas/Modales)
   - Acentos: `text-carrillo-blue-light` (#9DA8C5)
   - Neutros: `carrillo-gray`, `carrillo-slate`
+- **Paleta de Acento ("El Motor LegalTech") — Regla de Oro: máx 10% del diseño:**
+  - Cian: `carrillo-cyan` (#00F2FF) — elementos interactivos, gráficos de proceso, dots de estado
+  - Naranja: `carrillo-orange` (#E67E22) — EXCLUSIVO para botones CTA de conversión
+  - Violeta: `carrillo-violet` (#7D5FFF) — fondos de sección, degradados sutiles
 - **Fuente:** 'Lato' (Google Fonts) — ya configurada en layout.tsx y tailwind.
 - **Legibilidad:** SIEMPRE priorizar contraste y legibilidad sobre transparencias.
 
@@ -208,19 +212,18 @@ Ejecuta todas estas tareas en orden de prioridad. Trabaja de forma sistemática,
 
 - **Razón Social:** Carrillo ABGD SAS
 - **Nombre Comercial:** Carrillo Abogados
-- **Fundador:** Dr. Omar Carrillo (15 años en la SIC - Superintendencia de Industria y Comercio)
+- **CEO y Fundador:** Dr. Omar Alberto Carrillo Martinez (15 años en la SIC - Superintendencia de Industria y Comercio)
 - **Experiencia:** 23 años
-- **Dirección:** Cra. 40 #27-26, Torre de Cali, Piso 21, Oficina 2102A, Cali, Valle del Cauca, Colombia
+- **Dirección:** Calle 19 N 2N - 29, Edificio Torre de Cali, Piso 21, Oficina 2102A, Cali, Valle del Cauca, Colombia
 - **Email Director:** director@carrilloabgd.com
 - **Email Asesoría:** asesora@carrilloabgd.com
 - **WhatsApp:** Pendiente (usar placeholder 573001234567)
-- **Áreas de Práctica:**
-  - Marcas y Patentes (Propiedad Industrial)
-  - Derecho Corporativo
-  - Contratación Estatal
-  - Telecomunicaciones Legal
-  - Derecho de Competencias
-- **Lanzamiento:** 27 de Marzo de 2026
+- **Áreas de Práctica (en orden de prioridad según CEO):**
+  1. Registro de Marcas
+  2. Propiedad Intelectual
+  3. Contratación Estatal
+  4. Licitación Pública
+- **Lanzamiento:** 10 de Abril de 2026
 
 ---
 

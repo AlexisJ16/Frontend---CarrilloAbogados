@@ -95,7 +95,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
       >
         <div className="flex items-center justify-center gap-3 mb-3">
           <motion.div
-            className="w-1.5 h-1.5 bg-carrillo-blue-light rounded-full"
+            className="w-1.5 h-1.5 bg-carrillo-cyan rounded-full"
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
           />
@@ -103,14 +103,14 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
             Estableciendo Conexión Segura
           </span>
           <motion.div
-            className="w-1.5 h-1.5 bg-carrillo-blue-light rounded-full"
+            className="w-1.5 h-1.5 bg-carrillo-cyan rounded-full"
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
           />
         </div>
         <div className="w-40 sm:w-48 h-[2px] bg-white/10 rounded-full mx-auto overflow-hidden">
           <motion.div
-            className="h-full bg-gradient-to-r from-carrillo-blue-light to-white/60 rounded-full"
+            className="h-full bg-gradient-to-r from-carrillo-blue-light via-white/60 to-carrillo-cyan rounded-full"
             initial={{ width: '0%' }}
             animate={{ width: '100%' }}
             transition={{ duration: 2.5, ease: 'easeInOut' }}

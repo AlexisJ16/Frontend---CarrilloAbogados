@@ -10,7 +10,7 @@ interface TimeLeft {
 }
 
 export default function Countdown() {
-  const targetDate = new Date('2026-03-27T00:00:00').getTime();
+  const targetDate = new Date('2026-04-10T00:00:00').getTime();
   
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
@@ -41,7 +41,7 @@ export default function Countdown() {
   }, [targetDate]);
 
   const TimeBlock = ({ value, label }: { value: number; label: string }) => (
-    <div className="flex flex-col items-center bg-white/10 backdrop-blur-sm rounded-2xl p-6 min-w-[100px] shadow-xl border border-white/20">
+    <div className="flex flex-col items-center bg-white/10 backdrop-blur-sm rounded-2xl p-6 min-w-[100px] shadow-xl border border-white/20 hover:border-carrillo-cyan/30 transition-colors duration-500">
       <div className="text-5xl md:text-6xl font-black text-white mb-2 font-lato">
         {String(value).padStart(2, '0')}
       </div>

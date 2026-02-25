@@ -47,7 +47,7 @@ export default function Home() {
                   href="https://wa.me/573001234567"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-carrillo-blue/20 transition-all duration-300 hover:scale-105 hover:border-carrillo-blue-light/30"
+                  className="group flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-carrillo-orange/20 transition-all duration-300 hover:scale-105 hover:border-carrillo-orange/40"
                   aria-label="Contactar por WhatsApp"
                 >
                   <MessageCircle className="w-4 h-4 text-carrillo-blue-light group-hover:text-white transition-colors" />

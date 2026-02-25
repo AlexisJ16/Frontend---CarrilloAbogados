@@ -21,6 +21,10 @@ const config: Config = {
             dark: '#9DA8C5',
           },
           gray: '#D9DBE0',
+          // Paleta de Acento — "El Motor LegalTech" (usar máx 10%)
+          cyan: '#00F2FF',
+          orange: '#E67E22',
+          violet: '#7D5FFF',
         },
       },
       fontFamily: {
@@ -38,6 +42,7 @@ const config: Config = {
         'shimmer': 'shimmer 3s linear infinite',
         'scale-in': 'scaleIn 0.5s ease-out forwards',
         'bounce-slow': 'bounceSlow 2s ease-in-out infinite',
+        'glow-cyan': 'glowCyan 2s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -63,6 +68,10 @@ const config: Config = {
         glow: {
           '0%, 100%': { boxShadow: '0 0 20px rgba(157, 168, 197, 0.3)' },
           '50%': { boxShadow: '0 0 40px rgba(81, 103, 156, 0.6)' },
+        },
+        glowCyan: {
+          '0%, 100%': { boxShadow: '0 0 15px rgba(0, 242, 255, 0.2)' },
+          '50%': { boxShadow: '0 0 30px rgba(0, 242, 255, 0.45)' },
         },
         shimmer: {
           '0%': { backgroundPosition: '-1000px 0' },
