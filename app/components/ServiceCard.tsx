@@ -1,16 +1,35 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
+import { motion, AnimatePresence, useMotionTemplate, useMotionValue } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
+
+export interface ServiceStep {
+  title: string;
+  description: string;
+}
 
 interface ServiceCardProps {
   icon: ReactNode;
   title: string;
-  description: string;
+  tagline: string;
+  steps: ServiceStep[];
+  metric: string;
   index?: number;
+  isOpen: boolean;
+  onToggle: () => void;
 }
 
-export default function ServiceCard({ icon, title, description, index = 0 }: ServiceCardProps) {
+export default function ServiceCard({
+  icon,
+  title,
+  tagline,
+  steps,
+  metric,
+  index = 0,
+  isOpen,
+  onToggle,
+}: ServiceCardProps) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -22,7 +41,7 @@ export default function ServiceCard({ icon, title, description, index = 0 }: Ser
 
   const spotlightBg = useMotionTemplate`
     radial-gradient(
-      650px circle at ${mouseX}px ${mouseY}px,
+      600px circle at ${mouseX}px ${mouseY}px,
       rgba(0, 242, 255, 0.07),
       transparent 80%
     )
@@ -33,39 +52,179 @@ export default function ServiceCard({ icon, title, description, index = 0 }: Ser
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
-      transition={{
-        duration: 0.4,
-        delay: index * 0.1,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 hover:border-carrillo-cyan/20 hover:shadow-2xl hover:shadow-carrillo-cyan/10 transition-[border-color,box-shadow] duration-250 hover:scale-[1.02]"
-      onMouseMove={handleMouseMove}
+      transition={{ duration: 0.4, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      onMouseMove={!isOpen ? handleMouseMove : undefined}
+      className={`relative rounded-3xl border transition-[border-color,box-shadow,background-color] duration-300 ${
+        isOpen
+          ? 'bg-[#0A0F1E] border-carrillo-cyan/25 shadow-xl shadow-carrillo-cyan/10'
+          : 'bg-white/5 border-white/10 hover:border-white/20 hover:shadow-lg hover:shadow-carrillo-cyan/5'
+      }`}
     >
-      {/* Spotlight Effect */}
-      <motion.div
-        className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-        style={{ background: spotlightBg }}
-      />
+      {/* Cursor spotlight — collapsed only */}
+      {!isOpen && (
+        <motion.div
+          className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 hover:opacity-100 transition-opacity duration-200"
+          style={{ background: spotlightBg }}
+        />
+      )}
 
-      <div className="relative h-full p-8 z-10 flex flex-col">
-        <div className="mb-6 relative inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-transparent border border-white/10 shadow-inner group-hover:scale-110 group-hover:rotate-3 transition-transform duration-250">
-          <div className="text-carrillo-blue-light group-hover:text-white transition-colors duration-200">
-            {icon}
+      {/* ── Card header — always visible ─────────────────────── */}
+      <button
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={`service-steps-${index}`}
+        className="w-full text-left p-6 sm:p-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-carrillo-cyan/40 rounded-3xl"
+      >
+        <div className="flex items-center justify-between gap-3 mb-5">
+          {/* Icon */}
+          <div
+            className={`relative inline-flex h-14 w-14 items-center justify-center rounded-2xl border shadow-inner transition-all duration-300 flex-shrink-0 ${
+              isOpen
+                ? 'bg-gradient-to-br from-carrillo-cyan/15 to-carrillo-blue-dark/30 border-carrillo-cyan/30'
+                : 'bg-gradient-to-br from-white/10 to-transparent border-white/10'
+            }`}
+          >
+            <span
+              className={`transition-colors duration-300 ${
+                isOpen ? 'text-carrillo-cyan' : 'text-carrillo-blue-light'
+              }`}
+            >
+              {icon}
+            </span>
+            {/* Cian accent dot — Regla de Oro 10% */}
+            <span
+              className={`absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-carrillo-cyan transition-opacity duration-300 ${
+                isOpen ? 'opacity-60' : 'opacity-0'
+              }`}
+            />
           </div>
-          {/* Cian accent dot — Manual de Marca: 90% base, 10% acento */}
-          <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-carrillo-cyan opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
+
+          {/* Chevron */}
+          <motion.div
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className={`flex-shrink-0 transition-colors duration-300 ${
+              isOpen ? 'text-carrillo-cyan' : 'text-carrillo-blue-light/50'
+            }`}
+          >
+            <ChevronDown className="w-5 h-5" />
+          </motion.div>
         </div>
 
-        <h3 className="text-2xl font-black text-white mb-4 group-hover:text-carrillo-blue-light transition-colors duration-200">
-          {title}
-        </h3>
+        <h3 className="text-xl font-black text-white mb-2 leading-tight">{title}</h3>
+        <p className="text-carrillo-gray text-sm leading-relaxed">{tagline}</p>
 
-        <p className="text-carrillo-gray text-base leading-relaxed group-hover:text-white/90 transition-colors duration-200">
-          {description}
-        </p>
+        {/* "Ver proceso" hint — fades out when open */}
+        <AnimatePresence>
+          {!isOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, transition: { duration: 0.1 } }}
+              className="mt-4 flex items-center gap-1.5 text-carrillo-cyan/70 text-xs font-semibold uppercase tracking-wider"
+            >
+              <span>Ver proceso</span>
+              <motion.span
+                animate={{ x: [0, 3, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                →
+              </motion.span>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </button>
 
-        <div className="absolute top-8 right-8 w-20 h-20 bg-carrillo-blue-light/5 rounded-full blur-3xl group-hover:bg-carrillo-blue-light/20 transition-[background] duration-300" />
-      </div>
+      {/* ── Expanded content — Process Reveal ─────────────────── */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            id={`service-steps-${index}`}
+            key="steps-panel"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="px-6 sm:px-8 pb-6 sm:pb-8">
+              {/* Divider with cian gradient */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-carrillo-cyan/30 to-transparent mb-6" />
+
+              {/* Process steps — "Circuito Legal" */}
+              <div className="relative">
+                {steps.map((step, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative flex gap-4 pb-5 last:pb-0"
+                  >
+                    {/* Circuito Legal — vertical connector line between steps */}
+                    {i < steps.length - 1 && (
+                      <div className="absolute left-[17px] top-9 bottom-0 w-px overflow-hidden">
+                        <motion.div
+                          initial={{ scaleY: 0 }}
+                          animate={{ scaleY: 1 }}
+                          transition={{
+                            duration: 0.5,
+                            delay: i * 0.07 + 0.15,
+                            ease: 'easeOut',
+                          }}
+                          className="h-full w-full bg-gradient-to-b from-carrillo-cyan/50 to-carrillo-blue/20 origin-top"
+                        />
+                      </div>
+                    )}
+
+                    {/* Step number — cian circle node */}
+                    <div className="relative z-10 flex-shrink-0 w-9 h-9 rounded-full border border-carrillo-cyan/40 bg-carrillo-cyan/10 flex items-center justify-center">
+                      <span className="text-carrillo-cyan text-[11px] font-black tabular-nums">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+
+                    {/* Step text */}
+                    <div className="pt-0.5 min-w-0">
+                      <p className="text-white text-sm font-semibold mb-0.5 leading-snug">
+                        {step.title}
+                      </p>
+                      <p className="text-carrillo-gray/75 text-xs leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Credibility metric */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: steps.length * 0.07 + 0.1 }}
+                className="mt-5 py-2.5 px-4 rounded-xl bg-carrillo-blue-dark/25 border border-carrillo-blue/20"
+              >
+                <p className="text-carrillo-blue-light text-xs font-medium text-center tracking-wide">
+                  {metric}
+                </p>
+              </motion.div>
+
+              {/* CTA — naranja, conversión */}
+              <motion.a
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: steps.length * 0.07 + 0.2 }}
+                href="https://wa.me/573001234567"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-carrillo-orange text-white text-sm font-bold hover:brightness-110 active:scale-[0.97] transition-all duration-200"
+              >
+                Solicitar consulta gratuita
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
