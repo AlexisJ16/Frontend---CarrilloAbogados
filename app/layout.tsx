@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import SmoothScroll from "./components/SmoothScroll";
 import JsonLd from "./components/JsonLd";
 import GoogleAnalytics from "./components/GoogleAnalytics";
@@ -99,6 +100,7 @@ export default function RootLayout({
       <body className="font-lato">
         <SmoothScroll />
         {children}
+        <Analytics />
       </body>
     </html>
   );
