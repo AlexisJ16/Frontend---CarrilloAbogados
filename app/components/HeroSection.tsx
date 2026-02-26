@@ -20,7 +20,7 @@ export default function HeroSection() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-carrillo-cyan opacity-60"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-carrillo-cyan"></span>
             </span>
-            <span className="text-xs uppercase tracking-[0.2em] text-carrillo-blue-light font-bold">Relanzamiento oficial — 1ª Firma 100% Digital de Colombia</span>
+            <span className="text-xs uppercase tracking-[0.2em] text-carrillo-blue-light font-bold">Relanzamiento oficial — 1ª Firma 100% LegalTech en Colombia</span>
           </div>
         </motion.div>
 
@@ -45,9 +45,9 @@ export default function HeroSection() {
             className="text-lg sm:text-xl md:text-2xl text-carrillo-gray/80 font-light max-w-3xl mx-auto leading-relaxed px-2"
           >
             Nuestra solidez se basa en{' '}
-            <span className="text-white font-medium">23 años de experiencia legal</span>{' '}
+            <span className="text-white font-medium">30 años de experiencia legal</span>{' '}
             que nos impulsó a evolucionar y ser hoy la{' '}
-            <span className="text-white font-medium">primera firma 100% Digital de Colombia</span>,
+            <span className="text-white font-medium">primera firma 100% LegalTech en Colombia</span>,
             garantizando un servicio de vanguardia.
           </motion.p>
         </motion.div>

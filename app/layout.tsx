@@ -9,11 +9,11 @@ const siteUrl = "https://carrilloabgd.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Carrillo Abogados — Firma Legal Digital | Cali, Colombia",
-    template: "%s | Carrillo Abogados",
+    default: "Carrillo ABGD — Firma LegalTech en Cali, Colombia",
+    template: "%s | Carrillo ABGD",
   },
   description:
-    "Carrillo ABGD SAS — 23 años de experiencia legal en Cali. Especialistas en registro de marcas, propiedad intelectual, contratación estatal y licitación pública. Primera firma legal 100% digital de Colombia. Relanzamiento Abril 2026.",
+    "Carrillo ABGD SAS — 30 años de experiencia legal en Cali. Especialistas en registro de marcas, propiedad intelectual, contratación estatal y licitación pública. Primera firma legal 100% LegalTech en Colombia. Relanzamiento Abril 2026.",
   keywords: [
     "Abogados Cali",
     "Registro de marcas Colombia",
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     "Derecho administrativo Colombia",
     "Licitación pública Colombia",
     "Abogados licitaciones Cali",
-    "Carrillo Abogados",
-    "Firma legal digital",
+    "Carrillo ABGD",
+    "Firma LegalTech Colombia",
   ],
   authors: [{ name: "Carrillo ABGD SAS", url: siteUrl }],
   creator: "Carrillo ABGD SAS",
@@ -40,19 +40,19 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   openGraph: {
-    title: "Carrillo Abogados — Firma Legal Digital | Cali, Colombia",
+    title: "Carrillo ABGD — Firma LegalTech en Cali, Colombia",
     description:
-      "23 años protegiendo tu marca. Primera firma legal 100% digital de Colombia. Especialistas en marcas, patentes y derecho corporativo.",
+      "30 años protegiendo tu marca. Primera firma legal 100% LegalTech en Colombia. Especialistas en marcas, patentes y derecho corporativo.",
     type: "website",
     locale: "es_CO",
     url: siteUrl,
-    siteName: "Carrillo Abogados",
+    siteName: "Carrillo ABGD",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Carrillo Abogados — Firma Legal Digital",
+    title: "Carrillo ABGD — Firma LegalTech",
     description:
-      "23 años protegiendo tu marca. Primera firma legal 100% digital de Colombia.",
+      "30 años protegiendo tu marca. Primera firma legal 100% LegalTech en Colombia.",
   },
   robots: {
     index: true,
@@ -80,6 +80,7 @@ export default function RootLayout({
     <html lang="es">
       <head>
         <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" href="/logo-carrillo.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/logo-carrillo.jpg" />
         <meta name="theme-color" content="#51679C" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

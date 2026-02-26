@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { AnimatePresence, LayoutGroup } from 'framer-motion';
-import { MessageCircle } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import ParticlesBackground from './components/ParticlesBackground';
 import FloatingShapes from './components/FloatingShapes';
 import SplashScreen from './components/SplashScreen';
@@ -44,27 +44,25 @@ export default function Home() {
 
               <nav className="hidden md:flex items-center gap-4 lg:gap-6 text-sm ml-auto" aria-label="Navegación principal">
                 <a
-                  href="https://wa.me/573001234567"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=asesora@carrilloabgd.com&subject=Consulta%20Legal%20-%20Carrillo%20ABGD"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-carrillo-orange/20 transition-all duration-300 hover:scale-105 hover:border-carrillo-orange/40"
-                  aria-label="Contactar por WhatsApp"
+                  aria-label="Enviar correo electrónico"
                 >
-                  <MessageCircle className="w-4 h-4 text-carrillo-blue-light group-hover:text-white transition-colors" />
-                  <span className="text-white font-medium">WhatsApp</span>
+                  <Mail className="w-4 h-4 text-carrillo-blue-light group-hover:text-white transition-colors" />
+                  <span className="text-white font-medium">Escríbenos</span>
                 </a>
                 <div className="w-px h-5 bg-white/10" aria-hidden="true" />
                 <span className="text-carrillo-blue-light tracking-wide font-medium">Coming 2026</span>
               </nav>
 
               <a
-                href="https://wa.me/573001234567"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:asesora@carrilloabgd.com?subject=Consulta%20Legal%20-%20Carrillo%20ABGD"
                 className="md:hidden ml-auto flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10"
-                aria-label="Contactar por WhatsApp"
+                aria-label="Enviar correo electrónico"
               >
-                <MessageCircle className="w-4 h-4 text-carrillo-blue-light" />
+                <Mail className="w-4 h-4 text-carrillo-blue-light" />
               </a>
             </div>
           </header>

@@ -4,8 +4,8 @@ const organizationSchema = {
   name: 'Carrillo ABGD SAS',
   alternateName: 'Carrillo Abogados',
   url: 'https://carrilloabgd.com',
-  logo: 'https://carrilloabgd.com/logo-carrillo.jpg',
-  description: '23 años de experiencia legal en Colombia. Especialistas en marcas, patentes, derecho corporativo y contratación estatal.',
+  logo: 'https://carrilloabgd.com/logo-carrillo.svg',
+  description: '30 años de experiencia legal en Colombia. Especialistas en marcas, patentes, derecho corporativo y contratación estatal.',
   foundingDate: '2003',
   founder: {
     '@type': 'Person',
@@ -23,14 +23,8 @@ const organizationSchema = {
   contactPoint: [
     {
       '@type': 'ContactPoint',
-      email: 'director@carrilloabgd.com',
-      contactType: 'customer service',
-      availableLanguage: ['Spanish'],
-    },
-    {
-      '@type': 'ContactPoint',
       email: 'asesora@carrilloabgd.com',
-      contactType: 'sales',
+      contactType: 'customer service',
       availableLanguage: ['Spanish'],
     },
   ],
@@ -40,10 +34,10 @@ const organizationSchema = {
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LegalService',
-  name: 'Carrillo Abogados',
-  image: 'https://carrilloabgd.com/logo-carrillo.jpg',
+  name: 'Carrillo ABGD',
+  image: 'https://carrilloabgd.com/logo-carrillo.svg',
   url: 'https://carrilloabgd.com',
-  description: 'Firma legal líder en Cali, Colombia. Especialistas en marcas, patentes, propiedad industrial, derecho corporativo y contratación estatal. 23 años de experiencia.',
+  description: 'Firma legal líder en Cali, Colombia. Especialistas en marcas, patentes, propiedad industrial, derecho corporativo y contratación estatal. 30 años de experiencia.',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Cra. 40 #27-26, Torre de Cali, Piso 21, Oficina 2102A',
@@ -113,9 +107,9 @@ const localBusinessSchema = {
 const webSiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Carrillo Abogados',
+  name: 'Carrillo ABGD',
   url: 'https://carrilloabgd.com',
-  description: 'Firma legal digital líder en Colombia — Carrillo ABGD SAS',
+  description: 'Firma LegalTech líder en Colombia — Carrillo ABGD SAS',
   publisher: {
     '@type': 'Organization',
     name: 'Carrillo ABGD SAS',

@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export const alt = 'Carrillo Abogados — Firma Legal Digital en Cali, Colombia';
+export const alt = 'Carrillo ABGD — Firma LegalTech en Cali, Colombia';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -80,7 +80,7 @@ export default async function Image() {
               marginBottom: '32px',
             }}
           >
-            ABOGADOS
+            ABGD
           </div>
 
           {/* Divider */}
@@ -113,7 +113,7 @@ export default async function Image() {
               fontWeight: 400,
             }}
           >
-            Cali, Colombia — 23 Años de Experiencia
+            Cali, Colombia — 30 Años de Experiencia
           </div>
         </div>
 

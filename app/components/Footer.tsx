@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Scale } from 'lucide-react';
+import { Mail, MapPin, Scale } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -8,9 +8,9 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <h3 className="text-white font-bold text-lg mb-3">Carrillo Abogados</h3>
+            <h3 className="text-white font-bold text-lg mb-3">Carrillo ABGD</h3>
             <p className="text-carrillo-gray/60 text-sm leading-relaxed max-w-xs">
-              23 años de experiencia legal evolucionando hacia la primera firma 100% digital de Colombia.
+              30 años de experiencia legal evolucionando hacia la primera firma 100% LegalTech en Colombia.
             </p>
           </div>
 
@@ -31,31 +31,13 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-carrillo-gray/60">
               <li>
                 <a
-                  href="mailto:director@carrilloabgd.com"
-                  className="hover:text-white transition-colors inline-flex items-center gap-2"
-                >
-                  <Mail className="w-3.5 h-3.5" aria-hidden="true" />
-                  director@carrilloabgd.com
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:asesora@carrilloabgd.com"
-                  className="hover:text-white transition-colors inline-flex items-center gap-2"
-                >
-                  <Mail className="w-3.5 h-3.5" aria-hidden="true" />
-                  asesora@carrilloabgd.com
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://wa.me/573001234567"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=asesora@carrilloabgd.com&subject=Consulta%20Legal%20-%20Carrillo%20ABGD"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors inline-flex items-center gap-2"
                 >
-                  <Phone className="w-3.5 h-3.5" aria-hidden="true" />
-                  WhatsApp
+                  <Mail className="w-3.5 h-3.5" aria-hidden="true" />
+                  asesora@carrilloabgd.com
                 </a>
               </li>
             </ul>

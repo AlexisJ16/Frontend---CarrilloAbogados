@@ -27,13 +27,14 @@ export default function BrandLogo({ variant = 'header', layoutId, onClick, hideT
             : 'w-14 h-14 p-0.5'
         }`}
       >
-        <Image 
-          src="/logo-carrillo.jpg" 
-          alt="Carrillo Abogados" 
+        <Image
+          src="/logo-carrillo.svg"
+          alt="Carrillo ABGD"
           width={isSplash ? 128 : 64}
           height={isSplash ? 128 : 64}
-          className="w-full h-full object-cover rounded-xl"
+          className="w-full h-full object-contain rounded-xl"
           priority
+          unoptimized
         />
       </motion.div>
 
@@ -47,7 +48,7 @@ export default function BrandLogo({ variant = 'header', layoutId, onClick, hideT
                 : 'text-xl md:text-2xl mb-1'
             }`}
           >
-            Carrillo Abogados
+            Carrillo ABGD
           </motion.span>
           
           <motion.span 

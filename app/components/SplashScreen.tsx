@@ -63,7 +63,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
               className="flex flex-col items-center gap-5"
             >
               <h1 className="text-4xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70 tracking-wider text-center">
-                CARRILLO ABOGADOS
+                CARRILLO ABGD
               </h1>
 
               <motion.div

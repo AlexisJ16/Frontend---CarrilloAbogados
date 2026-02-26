@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
           Authorization: `Bearer ${resendApiKey}`,
         },
         body: JSON.stringify({
-          from: process.env.RESEND_FROM_EMAIL || 'Carrillo Abogados <onboarding@resend.dev>',
+          from: process.env.RESEND_FROM_EMAIL || 'Carrillo ABGD <onboarding@resend.dev>',
           to: [process.env.CONTACT_EMAIL || 'asesora@carrilloabgd.com'],
           subject: `Nuevo lead: ${sanitizedData.nombre}`,
           html: `
