@@ -20,11 +20,11 @@ export default function BrandLogo({ variant = 'header', layoutId, onClick, hideT
       onClick={onClick}
     >
       {/* Container Unificado con el efecto hover compartido */}
-      <motion.div 
-        className={`relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 group-hover:bg-white/10 group-hover:border-carrillo-blue-light/30 group-hover:shadow-[0_0_30px_rgba(157,168,197,0.2)] ${
-          isSplash 
-            ? 'w-24 h-24 md:w-32 md:h-32 p-1' 
-            : 'w-14 h-14 p-0.5'
+      <motion.div
+        className={`relative overflow-hidden rounded-2xl border border-white/20 bg-white transition-all duration-300 group-hover:shadow-[0_0_24px_rgba(255,255,255,0.2)] ${
+          isSplash
+            ? 'w-24 h-24 md:w-32 md:h-32 p-2'
+            : 'w-14 h-14 p-1'
         }`}
       >
         <Image
