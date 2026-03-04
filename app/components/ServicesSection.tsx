@@ -69,7 +69,7 @@ const SERVICES: Service[] = [
           'Monitoreamos posibles infracciones y actuamos legalmente ante cualquier vulneración de tus derechos intelectuales.',
       },
     ],
-    metric: 'Especialistas certificados ante la SIC con 23 años de trayectoria',
+    metric: 'Especialistas certificados ante la SIC con 30 años de trayectoria',
   },
   {
     icon: <Landmark size={32} strokeWidth={1.5} />,
@@ -97,7 +97,7 @@ const SERVICES: Service[] = [
           'Asesoramos durante toda la ejecución del contrato, anticipamos riesgos jurídicos y resolvemos controversias contractuales.',
       },
     ],
-    metric: '23 años protegiendo contratos con el Estado colombiano',
+    metric: '30 años protegiendo contratos con el Estado colombiano',
   },
   {
     icon: <FileSearch size={32} strokeWidth={1.5} />,
@@ -150,7 +150,7 @@ export default function ServicesSection() {
           </h2>
           <p className="text-base sm:text-lg text-carrillo-gray max-w-2xl mx-auto font-light">
             La abogacía ya no puede ser lenta y reactiva — redefinimos la práctica jurídica con
-            tecnología y 23 años de experiencia
+            tecnología y 30 años de experiencia
           </p>
         </AnimatedSection>
 
@@ -174,7 +174,7 @@ export default function ServicesSection() {
         {/* Statistics */}
         <AnimatedSection className="mt-20 sm:mt-32 border-t border-white/10 pt-12" delay={0.2}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-            <CountUp target="23" label="Años de Experiencia" />
+            <CountUp target="30" label="Años de Experiencia" />
             <CountUp target="15x" label="Crecimiento Digital" />
             <CountUp target="<1m" label="Tiempo de Respuesta" />
             <CountUp target="24/7" label="Disponibilidad" />

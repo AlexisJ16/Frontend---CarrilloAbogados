@@ -214,9 +214,7 @@ export default function ServiceCard({
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: steps.length * 0.07 + 0.2 }}
-                href="https://wa.me/573001234567"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contacto"
                 className="mt-3 flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-carrillo-orange text-white text-sm font-bold hover:brightness-110 active:scale-[0.97] transition-all duration-200"
               >
                 Solicitar consulta gratuita

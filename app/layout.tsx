@@ -70,6 +70,14 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
   },
   category: "Legal Services",
+  icons: {
+    icon: [
+      { url: "/logo-carrillo.svg", type: "image/svg+xml" },
+      { url: "/logo-carrillo.jpg", type: "image/jpeg" },
+    ],
+    shortcut: "/logo-carrillo.jpg",
+    apple: "/logo-carrillo.jpg",
+  },
 };
 
 export default function RootLayout({
@@ -81,8 +89,6 @@ export default function RootLayout({
     <html lang="es">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href="/logo-carrillo.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/logo-carrillo.jpg" />
         <meta name="theme-color" content="#51679C" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
