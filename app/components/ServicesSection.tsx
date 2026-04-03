@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { BadgeCheck, Lightbulb, Landmark, FileSearch } from 'lucide-react';
+import { BadgeCheck, Lightbulb, Landmark, Scale, Building2 } from 'lucide-react';
 import ServiceCard, { ServiceStep } from './ServiceCard';
 import CountUp from './CountUp';
 import AnimatedSection from './AnimatedSection';
@@ -69,7 +69,7 @@ const SERVICES: Service[] = [
           'Monitoreamos posibles infracciones y actuamos legalmente ante cualquier vulneración de tus derechos intelectuales.',
       },
     ],
-    metric: 'Especialistas certificados ante la SIC con 30 años de trayectoria',
+    metric: 'Especialistas certificados ante la SIC con 35 años de trayectoria',
   },
   {
     icon: <Landmark size={32} strokeWidth={1.5} />,
@@ -97,35 +97,63 @@ const SERVICES: Service[] = [
           'Asesoramos durante toda la ejecución del contrato, anticipamos riesgos jurídicos y resolvemos controversias contractuales.',
       },
     ],
-    metric: '30 años protegiendo contratos con el Estado colombiano',
+    metric: '35 años protegiendo contratos con el Estado colombiano',
   },
   {
-    icon: <FileSearch size={32} strokeWidth={1.5} />,
-    title: 'Licitación Pública',
-    tagline: 'Acompañamiento experto para maximizar tu éxito en procesos licitatorios del Estado.',
+    icon: <Scale size={32} strokeWidth={1.5} />,
+    title: 'Derecho Constitucional',
+    tagline: 'Defensa de derechos fundamentales y acciones constitucionales ante la jurisdiccion colombiana.',
     steps: [
       {
-        title: 'Revisión de requisitos',
+        title: 'Analisis constitucional',
         description:
-          'Analizamos tu capacidad jurídica, financiera y técnica para determinar la viabilidad de tu participación en el proceso.',
+          'Evaluamos la situacion juridica e identificamos los derechos fundamentales vulnerados o amenazados.',
       },
       {
-        title: 'Elaboración de propuesta',
+        title: 'Estrategia legal',
         description:
-          'Redactamos documentos técnicos y financieros de alto impacto, diferenciadores y ajustados a los pliegos de condiciones.',
+          'Definimos la accion constitucional mas efectiva: tutela, accion popular, accion de cumplimiento o habeas corpus.',
       },
       {
-        title: 'Presentación y sustentación',
+        title: 'Presentacion y seguimiento',
         description:
-          'Te representamos ante la entidad en todas las etapas del proceso licitatorio con argumentos jurídicos sólidos.',
+          'Radicamos la accion ante la autoridad competente y realizamos seguimiento hasta obtener sentencia favorable.',
       },
       {
-        title: 'Adjudicación y contrato',
+        title: 'Cumplimiento y ejecucion',
         description:
-          'Gestionamos la adjudicación, revisamos el contrato y aseguramos condiciones favorables para tu empresa o entidad.',
+          'Garantizamos el cumplimiento efectivo de la decision judicial y la restitucion de derechos fundamentales.',
       },
     ],
-    metric: 'Expertos en licitaciones del sector público y privado colombiano',
+    metric: '50+ acciones constitucionales exitosas',
+  },
+  {
+    icon: <Building2 size={32} strokeWidth={1.5} />,
+    title: 'Derecho Administrativo',
+    tagline: 'Representacion ante entidades publicas y defensa en procesos administrativos y contenciosos.',
+    steps: [
+      {
+        title: 'Asesoria preventiva',
+        description:
+          'Orientamos a personas y empresas sobre sus derechos y obligaciones frente a la administracion publica.',
+      },
+      {
+        title: 'Gestion administrativa',
+        description:
+          'Tramitamos recursos, peticiones y reclamaciones ante entidades del Estado para proteger tus intereses.',
+      },
+      {
+        title: 'Litigio contencioso',
+        description:
+          'Representamos ante la jurisdiccion contencioso-administrativa en acciones de nulidad, reparacion directa y controversias contractuales.',
+      },
+      {
+        title: 'Conciliacion y resolucion',
+        description:
+          'Buscamos soluciones negociadas cuando es viable, protegiendo tus derechos sin necesidad de litigio prolongado.',
+      },
+    ],
+    metric: '95% tasa de exito en procesos administrativos',
   },
 ];
 
@@ -150,12 +178,12 @@ export default function ServicesSection() {
           </h2>
           <p className="text-base sm:text-lg text-carrillo-gray max-w-2xl mx-auto font-light">
             La abogacía ya no puede ser lenta y reactiva — redefinimos la práctica jurídica con
-            tecnología y 30 años de experiencia
+            tecnología y 35 años de experiencia
           </p>
         </AnimatedSection>
 
         {/* Service cards — items-start prevents cross-column height stretching */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 items-start">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5 items-start">
           {SERVICES.map((service, i) => (
             <ServiceCard
               key={service.title}
@@ -174,7 +202,7 @@ export default function ServicesSection() {
         {/* Statistics */}
         <AnimatedSection className="mt-20 sm:mt-32 border-t border-white/10 pt-12" delay={0.2}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-            <CountUp target="30" label="Años de Experiencia" />
+            <CountUp target="35" label="Años de Experiencia" />
             <CountUp target="15x" label="Crecimiento Digital" />
             <CountUp target="<1m" label="Tiempo de Respuesta" />
             <CountUp target="24/7" label="Disponibilidad" />

@@ -2,7 +2,7 @@
 
 ![Next.js](https://img.shields.io/badge/Next.js-15.5-black) ![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue) ![Tailwind](https://img.shields.io/badge/Tailwind-3.4-38bdf8) ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-12.x-ff69b4) ![Deploy](https://img.shields.io/badge/Deploy-Vercel-000)
 
-Landing page profesional de alto impacto visual para **Carrillo Abogados** (Carrillo ABGD SAS), firma legal con 23 años de experiencia en Cali, Colombia.
+Landing page profesional de alto impacto visual para **Carrillo Abogados** (Carrillo ABGD SAS), firma legal con 35 años de experiencia en Cali, Colombia.
 
 **Lanzamiento:** 27 de Marzo de 2026
 **Dominio:** carrilloabgd.com
