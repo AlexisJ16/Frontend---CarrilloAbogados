@@ -4,5 +4,10 @@
       "Bash(git add:*)",
       "Bash(git commit:*)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "n8n-mcp",
+    "stitch",
+    "magicui"
+  ]
 }
